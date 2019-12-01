@@ -1,5 +1,7 @@
 # Homework 1
 
+[TOC]
+
 ## 1. Find an interesting big data problem and explain the intrinsic big data properties.
 
 Though a widely accpeted definition without any confusion or debates has not been brought up, a big data problem often refers to one of those specific problems with "3V" properties: volume, variety, and velocity.
