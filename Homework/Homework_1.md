@@ -7,8 +7,8 @@ For Big Data Analysis [HW1](https://github.com/hyzphbs/2019.M2.BigData/blob/mast
 - [Homework 1](#homework-1)
   - [1. Find an interesting big data problem and explain the intrinsic big data properties.](#1-find-an-interesting-big-data-problem-and-explain-the-intrinsic-big-data-properties)
     - [Problem](#problem)
-    - [Why "interesting"?](#why--interesting--)
-    - [Why "big"?](#why--big--)
+    - [Why interesting](#why-interesting-)
+    - [Why big](#why-big-)
   - [2. Propose a workflow to solve this problem](#2-propose-a-workflow-to-solve-this-problem)
     - [Breaking down a problem](#breaking-down-a-problem)
     - [Constructing a workflow](#constructing-a-workflow)
@@ -27,7 +27,7 @@ Though a widely accpeted definition without any confusion or debates has not bee
 
 The problem on how Chinese GitHub developers' registrating accounts, following other users, and generating cotents differ among individuals from discrepant geographical lacations is an interesting big data one to me.
 
-### Why "interesting"?
+### Why interesting
 
 GitHub, a platform for developing softeware collaborately, has been widely seen as "democratic and decentralized" (Vasilescu, Yu, Wang, Devanbu, & Filkov, 2015) due to its distributed Git technology in a long time.
 
@@ -35,7 +35,7 @@ However, it seems that Chinese developers in this online community from differen
 
 Does geographical factors in reality affects online societies? Figuring out what the real pattern and the real reason behind it may provide insights understanding the transition of social relationship or structure from the real society to online communities.
 
-### Why "big"?
+### Why big
 
 This proplem is exactly a big data one because the data of this research object is a big project designing to mirror the GitHub public timeline for acdemic purposes(Gousios and Spinellis, 2012), which do have "3V" properties.
 
