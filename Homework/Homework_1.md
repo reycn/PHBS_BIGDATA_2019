@@ -1,6 +1,23 @@
 # Homework 1
 
-[TOC]
+For Big Data Analysis [HW1](https://github.com/hyzphbs/2019.M2.BigData/blob/master/homework_1.pdf).
+
+## Content
+
+- [Homework 1](#homework-1)
+  - [1. Find an interesting big data problem and explain the intrinsic big data properties.](#1-find-an-interesting-big-data-problem-and-explain-the-intrinsic-big-data-properties)
+    - [Problem](#problem)
+    - [Why "interesting"?](#why--interesting--)
+    - [Why "big"?](#why--big--)
+  - [2. Propose a workflow to solve this problem](#2-propose-a-workflow-to-solve-this-problem)
+    - [Breaking down a problem](#breaking-down-a-problem)
+    - [Constructing a workflow](#constructing-a-workflow)
+  - [3. Decide what kind of databases to be used](#3-decide-what-kind-of-databases-to-be-used)
+    - [Database](#database)
+    - [Explanation](#explanation)
+  - [4. Preliminary result](#4-preliminary-result)
+  - [Note](#note)
+  - [Reference](#reference)
 
 ## 1. Find an interesting big data problem and explain the intrinsic big data properties.
 
