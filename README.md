@@ -12,5 +12,12 @@
 
 ## Useful Links
 
+### Data science
+
 - [CS109 Data Science](http://cs109.github.io/2015/index.html) from Harvard
 - [CS102 Big Data Tools and Techniques](https://web.stanford.edu/class/cs102/index.htm) from Stanford
+
+### Model and Machine Learning
+
+- [CS 109 Data Science](http://cs109.github.io/2015/) from Harvard
+- [CS 229 Machine Learning](http://cs229.stanford.edu) by Andrew Ng
