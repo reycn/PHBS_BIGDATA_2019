@@ -1,0 +1,2364 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js">
+<link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/texmath.css">
+<link rel="stylesheet" href="https://gitcdn.xyz/repo/goessner/mdmath/master/css/vscode-texmath.css">
+
+</head><body>
+<h1 id="homework-2-climate-change-not-done-yet-2" data-line="0" class="code-line">Homework 2: Climate Change (not done yet)</h1>
+<details>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.  
+<p data-line="4" class="code-line">In this problem, you will attempt to study the relationship between average global temperature and several other factors. The file climate_change_1.csv contains climate data from May 1983 to December 2008. The available variables include:</p>
+<p data-line="6" class="code-line"><code>Year</code>: the observation year.</p>
+<p data-line="8" class="code-line"><code>Month</code>: the observation month.</p>
+<p data-line="10" class="code-line"><code>Temp</code>: the difference in degrees Celsius between the average global temperature in that period and a reference value. This data comes from the <a href="https://crudata.uea.ac.uk/cru/data/temperature/" data-href="https://crudata.uea.ac.uk/cru/data/temperature/">Climatic Research Unit at the University of East Anglia</a> .<br>
+<code>CO2</code>, <code>N2O</code>, <code>CH4</code>, <code>CFC.11</code>, <code>CFC.12</code>: atmospheric concentrations of carbon dioxide (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><msub><mi>O</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">CO_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>), nitrous oxide (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi></mrow><annotation encoding="application/x-tex">N_2O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.02778em;">O</span></span></span></span>), methane (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><msub><mi>H</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">CH_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.08125em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>), trichlorofluoromethane (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>C</mi><msub><mi>l</mi><mn>3</mn></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">CCl_3F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.01968em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.13889em;">F</span></span></span></span>commonly referred to as <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>F</mi><mi>C</mi><mo>−</mo><mn>1</mn><mn>1</mn></mrow><annotation encoding="application/x-tex">CFC-11</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span></span>) and dichlorodifluoromethane (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>C</mi><msub><mi>l</mi><mn>2</mn></msub><msub><mi>F</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">CCl_2F_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.01968em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>; commonly referred to as <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>F</mi><mi>C</mi><mo>−</mo><mn>1</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">CFC-12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span></span>), respectively. This data comes from the <a href="http://www.esrl.noaa.gov/gmd/ccgg/data-products.html" data-href="http://www.esrl.noaa.gov/gmd/ccgg/data-products.html">ESRL/NOAA Global Monitoring Division</a>.</p>
+<p data-line="13" class="code-line"><code>CO2</code>, <code>N2O</code> and <code>CH4</code> are expressed in ppmv (parts per million by volume -- i.e., <em>397 ppmv of CO2 means that CO2 constitutes 397 millionths of the total volume of the atmosphere</em>)</p>
+<p data-line="15" class="code-line"><code>CFC.11</code> and <code>CFC.12</code> are expressed in ppbv (parts per billion by volume).<br>
+<code>Aerosols</code>: the mean stratospheric aerosol optical depth at 550 nm. This variable is linked to volcanoes, as volcanic eruptions result in new particles being added to the atmosphere, which affect how much of the sun's energy is reflected back into space. This data is from the <a href="https://data.giss.nasa.gov/modelforce/strataer/" data-href="https://data.giss.nasa.gov/modelforce/strataer/">Godard Institute for Space Studies at NASA</a>.</p>
+<p data-line="18" class="code-line"><code>TSI</code>: the total solar irradiance (TSI) in W/m2 (the rate at which the sun's energy is deposited per unit area). Due to sunspots and other solar phenomena, the amount of energy that is given off by the sun varies substantially with time. This data is from the <a href="https://solarisheppa.geomar.de/solarisheppa/cmip5" data-href="https://solarisheppa.geomar.de/solarisheppa/cmip5">SOLARIS-HEPPA project website</a>.</p>
+<p data-line="20" class="code-line"><code>MEI</code>: multivariate El Nino Southern Oscillation index (MEI), a measure of the strength of the <a href="http://en.wikipedia.org/wiki/El_nino" data-href="http://en.wikipedia.org/wiki/El_nino">El Nino/La Nina-Southern Oscillation</a> (a weather effect in the Pacific Ocean that affects global temperatures). This data comes from the <a href="http://www.esrl.noaa.gov/psd/enso/mei/table.html" data-href="http://www.esrl.noaa.gov/psd/enso/mei/table.html">ESRL/NOAA Physical Sciences Division</a>.</details></p>
+<hr>
+<h2 id="preparation-2" data-line="24" class="code-line">Preparation</h2>
+<h3 id="import-data-2" data-line="26" class="code-line">Import data</h3>
+<pre><code data-line="28" class="code-line language-python"><div><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+df1 = pd.read_csv(<span class="hljs-string">'../data/climate_change_1.csv'</span>)
+df2 = pd.read_csv(<span class="hljs-string">'../data/climate_change_2.csv'</span>)
+</div></code></pre>
+<h3 id="exploration-and-cleaning-2" data-line="34" class="code-line">Exploration and cleaning</h3>
+<h4 id="data-structure-2" data-line="36" class="code-line">Data structure</h4>
+<pre><code data-line="38" class="code-line language-python"><div>df1.head().round()
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="48" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1983</td>
+      <td>5</td>
+      <td>3.0</td>
+      <td>346.0</td>
+      <td>1639.0</td>
+      <td>304.0</td>
+      <td>191.0</td>
+      <td>350.0</td>
+      <td>1366.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1983</td>
+      <td>6</td>
+      <td>2.0</td>
+      <td>346.0</td>
+      <td>1634.0</td>
+      <td>304.0</td>
+      <td>192.0</td>
+      <td>352.0</td>
+      <td>1366.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1983</td>
+      <td>7</td>
+      <td>2.0</td>
+      <td>344.0</td>
+      <td>1633.0</td>
+      <td>304.0</td>
+      <td>193.0</td>
+      <td>354.0</td>
+      <td>1366.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1983</td>
+      <td>8</td>
+      <td>1.0</td>
+      <td>342.0</td>
+      <td>1631.0</td>
+      <td>304.0</td>
+      <td>194.0</td>
+      <td>356.0</td>
+      <td>1366.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1983</td>
+      <td>9</td>
+      <td>0.0</td>
+      <td>340.0</td>
+      <td>1648.0</td>
+      <td>304.0</td>
+      <td>194.0</td>
+      <td>357.0</td>
+      <td>1366.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="149" class="code-line language-python"><div>df2.head().round(<span class="hljs-number">2</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="159" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1983</td>
+      <td>5</td>
+      <td>2.56</td>
+      <td>345.96</td>
+      <td>1638.59</td>
+      <td>303.68</td>
+      <td>191.32</td>
+      <td>350.11</td>
+      <td>1366.10</td>
+      <td>0.09</td>
+      <td>2.64</td>
+      <td>0.11</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1983</td>
+      <td>6</td>
+      <td>2.17</td>
+      <td>345.52</td>
+      <td>1633.71</td>
+      <td>303.75</td>
+      <td>192.06</td>
+      <td>351.85</td>
+      <td>1366.12</td>
+      <td>0.08</td>
+      <td>2.63</td>
+      <td>0.12</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1983</td>
+      <td>7</td>
+      <td>1.74</td>
+      <td>344.15</td>
+      <td>1633.22</td>
+      <td>303.80</td>
+      <td>192.82</td>
+      <td>353.72</td>
+      <td>1366.28</td>
+      <td>0.07</td>
+      <td>2.63</td>
+      <td>0.14</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1983</td>
+      <td>8</td>
+      <td>1.13</td>
+      <td>342.25</td>
+      <td>1631.35</td>
+      <td>303.84</td>
+      <td>193.60</td>
+      <td>355.63</td>
+      <td>1366.42</td>
+      <td>0.07</td>
+      <td>2.63</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1983</td>
+      <td>9</td>
+      <td>0.43</td>
+      <td>340.17</td>
+      <td>1648.40</td>
+      <td>303.90</td>
+      <td>194.39</td>
+      <td>357.46</td>
+      <td>1366.23</td>
+      <td>0.06</td>
+      <td>2.65</td>
+      <td>0.15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h4 id="statistics-2" data-line="266" class="code-line">Statistics</h4>
+<p data-line="268" class="code-line">The most significant difference is the variable <code>NO</code>. Then explore <strong>basic statistics</strong> with round three:</p>
+<pre><code data-line="270" class="code-line language-python"><div>df1.describe().round(<span class="hljs-number">3</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="280" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>1995.662</td>
+      <td>6.552</td>
+      <td>0.276</td>
+      <td>363.227</td>
+      <td>1749.825</td>
+      <td>312.392</td>
+      <td>251.973</td>
+      <td>497.525</td>
+      <td>1366.071</td>
+      <td>0.017</td>
+      <td>0.257</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>7.423</td>
+      <td>3.447</td>
+      <td>0.938</td>
+      <td>12.647</td>
+      <td>46.052</td>
+      <td>5.225</td>
+      <td>20.232</td>
+      <td>57.827</td>
+      <td>0.400</td>
+      <td>0.029</td>
+      <td>0.179</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>1983.000</td>
+      <td>1.000</td>
+      <td>-1.635</td>
+      <td>340.170</td>
+      <td>1629.890</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1365.426</td>
+      <td>0.002</td>
+      <td>-0.282</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>1989.000</td>
+      <td>4.000</td>
+      <td>-0.399</td>
+      <td>353.020</td>
+      <td>1722.182</td>
+      <td>308.112</td>
+      <td>246.296</td>
+      <td>472.411</td>
+      <td>1365.717</td>
+      <td>0.003</td>
+      <td>0.122</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>1996.000</td>
+      <td>7.000</td>
+      <td>0.238</td>
+      <td>361.735</td>
+      <td>1764.040</td>
+      <td>311.507</td>
+      <td>258.344</td>
+      <td>528.356</td>
+      <td>1365.981</td>
+      <td>0.006</td>
+      <td>0.248</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>2002.000</td>
+      <td>10.000</td>
+      <td>0.830</td>
+      <td>373.455</td>
+      <td>1786.885</td>
+      <td>316.979</td>
+      <td>267.031</td>
+      <td>540.524</td>
+      <td>1366.363</td>
+      <td>0.013</td>
+      <td>0.407</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>2008.000</td>
+      <td>12.000</td>
+      <td>3.001</td>
+      <td>388.500</td>
+      <td>1814.180</td>
+      <td>322.182</td>
+      <td>271.494</td>
+      <td>543.813</td>
+      <td>1367.316</td>
+      <td>0.149</td>
+      <td>0.739</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="423" class="code-line language-python"><div>df2.describe().round(<span class="hljs-number">3</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="433" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+      <td>308.000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>1995.662</td>
+      <td>6.552</td>
+      <td>0.276</td>
+      <td>363.227</td>
+      <td>1749.825</td>
+      <td>312.392</td>
+      <td>251.973</td>
+      <td>497.525</td>
+      <td>1366.071</td>
+      <td>0.017</td>
+      <td>2.750</td>
+      <td>0.257</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>7.423</td>
+      <td>3.447</td>
+      <td>0.938</td>
+      <td>12.647</td>
+      <td>46.052</td>
+      <td>5.225</td>
+      <td>20.232</td>
+      <td>57.827</td>
+      <td>0.400</td>
+      <td>0.029</td>
+      <td>0.046</td>
+      <td>0.179</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>1983.000</td>
+      <td>1.000</td>
+      <td>-1.635</td>
+      <td>340.170</td>
+      <td>1629.890</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1365.426</td>
+      <td>0.002</td>
+      <td>2.630</td>
+      <td>-0.282</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>1989.000</td>
+      <td>4.000</td>
+      <td>-0.399</td>
+      <td>353.020</td>
+      <td>1722.182</td>
+      <td>308.112</td>
+      <td>246.296</td>
+      <td>472.411</td>
+      <td>1365.717</td>
+      <td>0.003</td>
+      <td>2.722</td>
+      <td>0.122</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>1996.000</td>
+      <td>7.000</td>
+      <td>0.238</td>
+      <td>361.735</td>
+      <td>1764.040</td>
+      <td>311.507</td>
+      <td>258.344</td>
+      <td>528.356</td>
+      <td>1365.981</td>
+      <td>0.006</td>
+      <td>2.764</td>
+      <td>0.248</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>2002.000</td>
+      <td>10.000</td>
+      <td>0.830</td>
+      <td>373.455</td>
+      <td>1786.885</td>
+      <td>316.979</td>
+      <td>267.031</td>
+      <td>540.524</td>
+      <td>1366.363</td>
+      <td>0.013</td>
+      <td>2.787</td>
+      <td>0.407</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>2008.000</td>
+      <td>12.000</td>
+      <td>3.001</td>
+      <td>388.500</td>
+      <td>1814.180</td>
+      <td>322.182</td>
+      <td>271.494</td>
+      <td>543.813</td>
+      <td>1367.316</td>
+      <td>0.149</td>
+      <td>2.814</td>
+      <td>0.739</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h4 id="missing-data-2" data-line="585" class="code-line">Missing data</h4>
+<pre><code data-line="587" class="code-line language-python"><div>df1.info()
+</div></code></pre>
+<pre data-line="591" class="code-line"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 308 entries, 0 to 307
+Data columns (total 11 columns):
+Year        308 non-null int64
+Month       308 non-null int64
+MEI         308 non-null float64
+CO2         308 non-null float64
+CH4         308 non-null float64
+N2O         308 non-null float64
+CFC-11      308 non-null float64
+CFC-12      308 non-null float64
+TSI         308 non-null float64
+Aerosols    308 non-null float64
+Temp        308 non-null float64
+dtypes: float64(9), int64(2)
+memory usage: 26.6 KB
+</code></pre>
+<pre><code data-line="608" class="code-line language-python"><div>df2.info()
+</div></code></pre>
+<pre data-line="612" class="code-line"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 308 entries, 0 to 307
+Data columns (total 12 columns):
+Year        308 non-null int64
+Month       308 non-null int64
+MEI         308 non-null float64
+CO2         308 non-null float64
+CH4         308 non-null float64
+N2O         308 non-null float64
+CFC-11      308 non-null float64
+CFC-12      308 non-null float64
+TSI         308 non-null float64
+Aerosols    308 non-null float64
+NO          308 non-null float64
+Temp        308 non-null float64
+dtypes: float64(10), int64(2)
+memory usage: 29.0 KB
+</code></pre>
+<p data-line="630" class="code-line">No missing data were found, then continue.</p>
+<h4 id="duplication-2" data-line="632" class="code-line">Duplication</h4>
+<pre><code data-line="634" class="code-line language-python"><div>print(<span class="hljs-string">'Duplicated rows:'</span>, len(df1[df1.duplicated()]), <span class="hljs-string">', then continue.'</span>)
+</div></code></pre>
+<pre data-line="638" class="code-line"><code>Duplicated rows: 0 , then continue.
+</code></pre>
+<h4 id="outliers-2" data-line="640" class="code-line">Outliers</h4>
+<p data-line="642" class="code-line">Conduct a boxploting to find out outliers in DF1 and DF2:</p>
+<pre><code data-line="644" class="code-line language-python"><div><span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+fig1 = plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">8</span>), dpi=<span class="hljs-number">96</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(df1.columns) + <span class="hljs-number">1</span>):
+    fig1.add_subplot(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, i)
+    df1.iloc[:, [i<span class="hljs-number">-1</span>]].boxplot()
+</div></code></pre>
+<pre><code data-line="654" class="code-line language-python"><div>range(<span class="hljs-number">1</span>, len(df2.columns) + <span class="hljs-number">1</span>)
+</div></code></pre>
+<pre data-line="658" class="code-line"><code>range(1, 13)
+</code></pre>
+<pre><code data-line="660" class="code-line language-python"><div>fig2 = plt.figure(figsize=(<span class="hljs-number">12</span>,<span class="hljs-number">8</span>), dpi=<span class="hljs-number">96</span>)
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(df2.columns) + <span class="hljs-number">1</span>):
+    fig2.add_subplot(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, i)
+    df2.iloc[:, [i<span class="hljs-number">-1</span>]].boxplot()
+</div></code></pre>
+<p data-line="667" class="code-line"><img src="./res/hw2/output_25_0.png" alt="png" class="loading" id="image-hash-29d199d66984fb69ff2f3f25c0b95bcd29ad7991ba001483f332b8f8764ef345"></p>
+<p data-line="669" class="code-line">Check outliers:</p>
+<pre><code data-line="671" class="code-line language-python"><div><span class="hljs-keyword">import</span> ipywidgets <span class="hljs-keyword">as</span> widgets
+z_slider = widgets.FloatSlider(
+    value=<span class="hljs-number">2.9</span>,
+    min=<span class="hljs-number">2</span>,
+    max=<span class="hljs-number">3.5</span>,
+    step=<span class="hljs-number">0.1</span>,
+    description=<span class="hljs-string">'Threshold:'</span>,
+    disabled=<span class="hljs-literal">False</span>,
+    continuous_update=<span class="hljs-literal">True</span>,
+    orientation=<span class="hljs-string">'horizontal'</span>,
+    readout=<span class="hljs-literal">True</span>,
+    readout_format=<span class="hljs-string">'.1f'</span>,
+)
+z_slider
+</div></code></pre>
+<pre data-line="688" class="code-line"><code>FloatSlider(value=2.9, description='Threshold:', max=3.5, min=2.0, readout_format='.1f')
+</code></pre>
+<pre><code data-line="690" class="code-line language-python"><div><span class="hljs-keyword">from</span> scipy <span class="hljs-keyword">import</span> stats
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+z = np.abs(stats.zscore(df1[<span class="hljs-string">'MEI'</span>]))
+outlier_index = np.where(z &gt; z_slider.value)[<span class="hljs-number">0</span>]
+print(<span class="hljs-string">'Threshhold:'</span>, z_slider.value)
+print(<span class="hljs-string">'Index:'</span>, outlier_index)
+print(<span class="hljs-string">'Outlier:'</span>, [df1[<span class="hljs-string">'MEI'</span>][i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> outlier_index])
+</div></code></pre>
+<pre data-line="700" class="code-line"><code>Threshhold: 2.9
+Index: [171 172]
+Outlier: [3.0010000000000003, 3.0]
+</code></pre>
+<p data-line="704" class="code-line">Since rare outliers, ignore at preparation step and continue.</p>
+<h4 id="correlation-2" data-line="706" class="code-line">Correlation</h4>
+<p data-line="708" class="code-line">Find and plot highly correlated variables (r&gt;0.6 in df1, plotting r&gt;0.5):</p>
+<pre><code data-line="710" class="code-line language-python"><div>corr = df1.corr()
+high_corr = corr[np.abs(corr) &gt; <span class="hljs-number">0.5</span>].fillna(<span class="hljs-number">0</span>)
+corr[np.abs(corr) &gt; <span class="hljs-number">0.6</span>].fillna(<span class="hljs-string">''</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="722" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Year</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td>0.985379</td>
+      <td>0.910563</td>
+      <td>0.99485</td>
+      <td></td>
+      <td>0.870067</td>
+      <td></td>
+      <td></td>
+      <td>0.755731</td>
+    </tr>
+    <tr>
+      <td>Month</td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MEI</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CO2</td>
+      <td>0.985379</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td>0.872253</td>
+      <td>0.981135</td>
+      <td></td>
+      <td>0.82321</td>
+      <td></td>
+      <td></td>
+      <td>0.748505</td>
+    </tr>
+    <tr>
+      <td>CH4</td>
+      <td>0.910563</td>
+      <td></td>
+      <td></td>
+      <td>0.872253</td>
+      <td>1</td>
+      <td>0.894409</td>
+      <td>0.713504</td>
+      <td>0.958237</td>
+      <td></td>
+      <td></td>
+      <td>0.699697</td>
+    </tr>
+    <tr>
+      <td>N2O</td>
+      <td>0.99485</td>
+      <td></td>
+      <td></td>
+      <td>0.981135</td>
+      <td>0.894409</td>
+      <td>1</td>
+      <td></td>
+      <td>0.839295</td>
+      <td></td>
+      <td></td>
+      <td>0.743242</td>
+    </tr>
+    <tr>
+      <td>CFC-11</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.713504</td>
+      <td></td>
+      <td>1</td>
+      <td>0.831381</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CFC-12</td>
+      <td>0.870067</td>
+      <td></td>
+      <td></td>
+      <td>0.82321</td>
+      <td>0.958237</td>
+      <td>0.839295</td>
+      <td>0.831381</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td>0.688944</td>
+    </tr>
+    <tr>
+      <td>TSI</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Aerosols</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Temp</td>
+      <td>0.755731</td>
+      <td></td>
+      <td></td>
+      <td>0.748505</td>
+      <td>0.699697</td>
+      <td>0.743242</td>
+      <td></td>
+      <td>0.688944</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="907" class="code-line language-python"><div>plt.figure(dpi=<span class="hljs-number">128</span>)
+ax = sns.heatmap(
+    high_corr,
+    vmin=<span class="hljs-number">-1</span>, vmax=<span class="hljs-number">1</span>, center=<span class="hljs-number">0</span>,
+    cmap=sns.diverging_palette(<span class="hljs-number">20</span>, <span class="hljs-number">220</span>, n=<span class="hljs-number">200</span>),
+    square=<span class="hljs-literal">True</span>
+)
+ax.set_xticklabels(
+    ax.get_xticklabels(),
+    rotation=<span class="hljs-number">45</span>,
+    horizontalalignment=<span class="hljs-string">'right'</span>
+);
+</div></code></pre>
+<p data-line="922" class="code-line"><img src="./res/hw2/output_33_0.png" alt="png" class="loading" id="image-hash-beb371c7a6e06697138f8a436ff24ae5ddba6ad52510523b0db10d134a8b5fce"></p>
+<p data-line="924" class="code-line">Similarly, correlation in df1:</p>
+<pre><code data-line="926" class="code-line language-python"><div>corr = df2.corr()
+high_corr = corr[np.abs(corr) &gt; <span class="hljs-number">0.5</span>].fillna(<span class="hljs-number">0</span>)
+corr[np.abs(corr) &gt; <span class="hljs-number">0.6</span>].fillna(<span class="hljs-string">''</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="938" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Year</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td>0.985379</td>
+      <td>0.910563</td>
+      <td>0.99485</td>
+      <td></td>
+      <td>0.870067</td>
+      <td></td>
+      <td></td>
+      <td>0.910563</td>
+      <td>0.755731</td>
+    </tr>
+    <tr>
+      <td>Month</td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MEI</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CO2</td>
+      <td>0.985379</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td>0.872253</td>
+      <td>0.981135</td>
+      <td></td>
+      <td>0.82321</td>
+      <td></td>
+      <td></td>
+      <td>0.872253</td>
+      <td>0.748505</td>
+    </tr>
+    <tr>
+      <td>CH4</td>
+      <td>0.910563</td>
+      <td></td>
+      <td></td>
+      <td>0.872253</td>
+      <td>1</td>
+      <td>0.894409</td>
+      <td>0.713504</td>
+      <td>0.958237</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td>0.699697</td>
+    </tr>
+    <tr>
+      <td>N2O</td>
+      <td>0.99485</td>
+      <td></td>
+      <td></td>
+      <td>0.981135</td>
+      <td>0.894409</td>
+      <td>1</td>
+      <td></td>
+      <td>0.839295</td>
+      <td></td>
+      <td></td>
+      <td>0.894409</td>
+      <td>0.743242</td>
+    </tr>
+    <tr>
+      <td>CFC-11</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.713504</td>
+      <td></td>
+      <td>1</td>
+      <td>0.831381</td>
+      <td></td>
+      <td></td>
+      <td>0.713504</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CFC-12</td>
+      <td>0.870067</td>
+      <td></td>
+      <td></td>
+      <td>0.82321</td>
+      <td>0.958237</td>
+      <td>0.839295</td>
+      <td>0.831381</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td>0.958237</td>
+      <td>0.688944</td>
+    </tr>
+    <tr>
+      <td>TSI</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Aerosols</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>NO</td>
+      <td>0.910563</td>
+      <td></td>
+      <td></td>
+      <td>0.872253</td>
+      <td>1</td>
+      <td>0.894409</td>
+      <td>0.713504</td>
+      <td>0.958237</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td>0.699697</td>
+    </tr>
+    <tr>
+      <td>Temp</td>
+      <td>0.755731</td>
+      <td></td>
+      <td></td>
+      <td>0.748505</td>
+      <td>0.699697</td>
+      <td>0.743242</td>
+      <td></td>
+      <td>0.688944</td>
+      <td></td>
+      <td></td>
+      <td>0.699697</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="1150" class="code-line language-python"><div>plt.figure(dpi=<span class="hljs-number">128</span>)
+ax = sns.heatmap(
+    high_corr,
+    vmin=<span class="hljs-number">-1</span>, vmax=<span class="hljs-number">1</span>, center=<span class="hljs-number">0</span>,
+    cmap=sns.diverging_palette(<span class="hljs-number">20</span>, <span class="hljs-number">220</span>, n=<span class="hljs-number">200</span>),
+    square=<span class="hljs-literal">True</span>
+)
+ax.set_xticklabels(
+    ax.get_xticklabels(),
+    rotation=<span class="hljs-number">45</span>,
+    horizontalalignment=<span class="hljs-string">'right'</span>
+);
+</div></code></pre>
+<p data-line="1165" class="code-line"><img src="./res/hw2/output_36_0.png" alt="png" class="loading" id="image-hash-1b8365a90760f3c53a98381ab3c5f06a35f671a9a5168242b784a9382e63e5d0"></p>
+<p data-line="1167" class="code-line"><strong>Potential redundant variables found</strong>, however, now the data is prepared for analyzing.</p>
+<hr>
+<h2 id="problem-1--first-model-2" data-line="1171" class="code-line">Problem 1 — First Model</h2>
+<p data-line="1173" class="code-line"><em>We are interested in how changes in these variables affect future temperatures, as well as how well these variables explain temperature changes so far. To do this, first read the dataset climate_change_1.csv into Python or Matlab</em>.</p>
+<p data-line="1175" class="code-line"><em>Then, split the data into a training set, consisting of all the observations up to and including 2006, and a testing set consisting of the remaining years. A training set refers to the data that will be used to build the model, and a testing set refers to the data we will use to test our predictive ability</em>.</p>
+<p data-line="1177" class="code-line"><em>After seeing the problem, your classmate Alice immediately argues that we can apply a linear regression model. Though being a little doubtful, you decide to have a try. To solve the linear regression problem, you recall the linear regression has a closed form solution</em>:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi><mo>=</mo><mo>(</mo><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi><msup><mo>)</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>X</mi><mi>T</mi></msup><mi>Y</mi></mrow><annotation encoding="application/x-tex">\theta = (X^TX)^{-1}X^TY</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8913309999999999em;"></span><span class="strut bottom" style="height:1.1413309999999999em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="mrel">=</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord">−</span><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span></span></p>
+<h3 id="read-and-split-2" data-line="1180" class="code-line">Read and split</h3>
+<p data-line="1182" class="code-line">Though data have been prepared in section <em>Data Preparation</em>, dataset df1 has been imported again here following problem description.</p>
+<p data-line="1184" class="code-line"><strong>Read the dataset</strong>:</p>
+<pre><code data-line="1186" class="code-line language-python"><div><span class="hljs-comment"># loaded in exploration</span>
+
+<span class="hljs-comment"># import pandas as pd</span>
+<span class="hljs-comment"># df1 = pd.read_csv('../data/climate_change_1.csv').iloc[:,2:]</span>
+</div></code></pre>
+<p data-line="1193" class="code-line"><strong>Split into training set and testing set</strong>:</p>
+<pre><code data-line="1195" class="code-line language-python"><div><span class="hljs-comment"># Df1 trainset</span>
+df1_train = df1[df1[<span class="hljs-string">'Year'</span>]&lt;=<span class="hljs-number">2006</span>].iloc[:,<span class="hljs-number">2</span>:]
+<span class="hljs-comment"># Check the result</span>
+df1_train.iloc[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>,<span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>],:]
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1208" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.556</td>
+      <td>345.96</td>
+      <td>1638.59</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1366.1024</td>
+      <td>0.0863</td>
+      <td>0.109</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2.167</td>
+      <td>345.52</td>
+      <td>1633.71</td>
+      <td>303.746</td>
+      <td>192.057</td>
+      <td>351.848</td>
+      <td>1366.1208</td>
+      <td>0.0794</td>
+      <td>0.118</td>
+    </tr>
+    <tr>
+      <td>282</td>
+      <td>1.292</td>
+      <td>380.18</td>
+      <td>1791.91</td>
+      <td>320.321</td>
+      <td>248.605</td>
+      <td>539.500</td>
+      <td>1365.7039</td>
+      <td>0.0049</td>
+      <td>0.440</td>
+    </tr>
+    <tr>
+      <td>283</td>
+      <td>0.951</td>
+      <td>381.79</td>
+      <td>1795.04</td>
+      <td>320.451</td>
+      <td>248.480</td>
+      <td>539.377</td>
+      <td>1365.7087</td>
+      <td>0.0054</td>
+      <td>0.518</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="1285" class="code-line language-python"><div><span class="hljs-comment"># Df1 testet</span>
+df1_test = df1[df1[<span class="hljs-string">'Year'</span>]&gt;<span class="hljs-number">2006</span>].iloc[:,<span class="hljs-number">2</span>:]
+<span class="hljs-comment"># Check the result</span>
+df1_test.iloc[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>,<span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>],:]
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1298" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>284</td>
+      <td>0.974</td>
+      <td>382.93</td>
+      <td>1799.66</td>
+      <td>320.561</td>
+      <td>248.372</td>
+      <td>539.206</td>
+      <td>1365.7173</td>
+      <td>0.0054</td>
+      <td>0.601</td>
+    </tr>
+    <tr>
+      <td>285</td>
+      <td>0.510</td>
+      <td>383.81</td>
+      <td>1803.08</td>
+      <td>320.571</td>
+      <td>248.264</td>
+      <td>538.973</td>
+      <td>1365.7145</td>
+      <td>0.0051</td>
+      <td>0.498</td>
+    </tr>
+    <tr>
+      <td>306</td>
+      <td>-0.621</td>
+      <td>384.13</td>
+      <td>1812.37</td>
+      <td>322.013</td>
+      <td>244.225</td>
+      <td>534.906</td>
+      <td>1365.7065</td>
+      <td>0.0048</td>
+      <td>0.394</td>
+    </tr>
+    <tr>
+      <td>307</td>
+      <td>-0.666</td>
+      <td>385.56</td>
+      <td>1812.88</td>
+      <td>322.182</td>
+      <td>244.204</td>
+      <td>535.005</td>
+      <td>1365.6926</td>
+      <td>0.0046</td>
+      <td>0.330</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="1-closed-form-function-2" data-line="1375" class="code-line">1. Closed form function</h3>
+<p data-line="1377" class="code-line"><em>Implement a function <code>closed_form_1</code> that computes this closed form solution given the features X, labels y (using Python or Matlab).</em></p>
+<p data-line="1379" class="code-line">Given a pandas <code>Dataframe</code>, the features X is the dataframe excluding taget y, then:</p>
+<pre><code data-line="1381" class="code-line language-python"><div><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np  <span class="hljs-comment"># matrix, vector, and linear algebra support</span>
+<span class="hljs-keyword">from</span> numpy.linalg <span class="hljs-keyword">import</span> inv  <span class="hljs-comment"># matrix inversion</span>
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">closed_form_1</span><span class="hljs-params">(X: np.ndarray, y: np.ndarray)</span> -&gt; np.matrix:</span>
+    <span class="hljs-string">"""
+    To calculate OLS theta(s) given X, y in ndarrays.
+
+    Parameters:
+    ----------
+        X: features, IV.
+        y: taget variable, DV.
+    Return:
+    ----------
+        theta: coefficients
+    """</span>
+
+    X = np.column_stack((np.ones(len(X)), X))  <span class="hljs-comment"># add x0 = 1 to matrix X</span>
+    theta = inv(X.T @ X) @ X.T @ y
+    <span class="hljs-comment">#theta = theta[1:].reshape((1,10))</span>
+    <span class="hljs-keyword">return</span> theta
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">closed_form_df</span><span class="hljs-params">(df: pd.core.frame.DataFrame, column: int = <span class="hljs-number">8</span>)</span> -&gt; np.matrix:</span>
+    <span class="hljs-string">"""
+    To calculate OLS theta(s) given data in a DataFrame.
+
+    Parameters:
+    ----------
+        df: a DataFrame of data including both IV X and DV y.
+        column = 8: index number of clomn where DV y lies. The default value is 8.
+
+    Return:
+    ----------
+        theta: coefficients
+    """</span>
+
+    X = df.drop(df.columns[column], axis=<span class="hljs-number">1</span>).to_numpy()  <span class="hljs-comment"># X: the features</span>
+    X = np.column_stack((np.ones(len(X)), X))  <span class="hljs-comment"># add x0 = 1 to matrix X</span>
+    y = df.iloc[:, [column]].to_numpy(
+    )  <span class="hljs-comment"># y: the results, lower case to emphasize the difference</span>
+    theta = inv(X.T @ X) @ X.T @ y
+    <span class="hljs-comment">#theta = theta[1:].reshape((1,10))</span>
+    <span class="hljs-keyword">return</span> theta
+</div></code></pre>
+<p data-line="1428" class="code-line">Test <code>closed_form_1</code> and <code>closed_form_df</code> on df1:</p>
+<pre><code data-line="1430" class="code-line language-python"><div>df1_train.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1440" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.556</td>
+      <td>345.96</td>
+      <td>1638.59</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1366.1024</td>
+      <td>0.0863</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2.167</td>
+      <td>345.52</td>
+      <td>1633.71</td>
+      <td>303.746</td>
+      <td>192.057</td>
+      <td>351.848</td>
+      <td>1366.1208</td>
+      <td>0.0794</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1.741</td>
+      <td>344.15</td>
+      <td>1633.22</td>
+      <td>303.795</td>
+      <td>192.818</td>
+      <td>353.725</td>
+      <td>1366.2850</td>
+      <td>0.0731</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1.130</td>
+      <td>342.25</td>
+      <td>1631.35</td>
+      <td>303.839</td>
+      <td>193.602</td>
+      <td>355.633</td>
+      <td>1366.4202</td>
+      <td>0.0673</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.428</td>
+      <td>340.17</td>
+      <td>1648.40</td>
+      <td>303.901</td>
+      <td>194.392</td>
+      <td>357.465</td>
+      <td>1366.2335</td>
+      <td>0.0619</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>279</td>
+      <td>0.759</td>
+      <td>380.45</td>
+      <td>1762.66</td>
+      <td>319.930</td>
+      <td>248.981</td>
+      <td>539.682</td>
+      <td>1365.7067</td>
+      <td>0.0041</td>
+    </tr>
+    <tr>
+      <td>280</td>
+      <td>0.793</td>
+      <td>378.92</td>
+      <td>1776.04</td>
+      <td>320.010</td>
+      <td>248.775</td>
+      <td>539.566</td>
+      <td>1365.8419</td>
+      <td>0.0043</td>
+    </tr>
+    <tr>
+      <td>281</td>
+      <td>0.892</td>
+      <td>379.16</td>
+      <td>1789.02</td>
+      <td>320.125</td>
+      <td>248.666</td>
+      <td>539.488</td>
+      <td>1365.8270</td>
+      <td>0.0044</td>
+    </tr>
+    <tr>
+      <td>282</td>
+      <td>1.292</td>
+      <td>380.18</td>
+      <td>1791.91</td>
+      <td>320.321</td>
+      <td>248.605</td>
+      <td>539.500</td>
+      <td>1365.7039</td>
+      <td>0.0049</td>
+    </tr>
+    <tr>
+      <td>283</td>
+      <td>0.951</td>
+      <td>381.79</td>
+      <td>1795.04</td>
+      <td>320.451</td>
+      <td>248.480</td>
+      <td>539.377</td>
+      <td>1365.7087</td>
+      <td>0.0054</td>
+    </tr>
+  </tbody>
+</table>
+<p>284 rows × 8 columns</p>
+</div>
+<pre><code data-line="1590" class="code-line language-python"><div><span class="hljs-comment"># Given X, and y in numpy arrays</span>
+X = df1_train.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy() <span class="hljs-comment"># X: the features</span>
+y = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()                       <span class="hljs-comment"># y: the results, lower case to emphasize the difference</span>
+X_test = df1_test.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y_test = df1_test.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+theta = closed_form_1(X, y)
+theta
+</div></code></pre>
+<pre data-line="1600" class="code-line"><code>array([[-1.24594260e+02],
+       [ 6.42053134e-02],
+       [ 6.45735927e-03],
+       [ 1.24041896e-04],
+       [-1.65280032e-02],
+       [-6.63048889e-03],
+       [ 3.80810324e-03],
+       [ 9.31410835e-02],
+       [-1.53761324e+00]])
+</code></pre>
+<pre><code data-line="1610" class="code-line language-python"><div><span class="hljs-comment"># Given a DataFrame</span>
+theta = closed_form_df(df1_train).reshape((<span class="hljs-number">1</span>,<span class="hljs-number">9</span>))
+theta
+</div></code></pre>
+<pre data-line="1616" class="code-line"><code>[[1.0000000e+00 2.5560000e+00 3.4596000e+02 ... 3.5011300e+02
+  1.3661024e+03 8.6300000e-02]
+ [1.0000000e+00 2.1670000e+00 3.4552000e+02 ... 3.5184800e+02
+  1.3661208e+03 7.9400000e-02]
+ [1.0000000e+00 1.7410000e+00 3.4415000e+02 ... 3.5372500e+02
+  1.3662850e+03 7.3100000e-02]
+ ...
+ [1.0000000e+00 8.9200000e-01 3.7916000e+02 ... 5.3948800e+02
+  1.3658270e+03 4.4000000e-03]
+ [1.0000000e+00 1.2920000e+00 3.8018000e+02 ... 5.3950000e+02
+  1.3657039e+03 4.9000000e-03]
+ [1.0000000e+00 9.5100000e-01 3.8179000e+02 ... 5.3937700e+02
+  1.3657087e+03 5.4000000e-03]]
+
+
+
+
+
+array([[-1.24594260e+02,  6.42053134e-02,  6.45735927e-03,
+         1.24041896e-04, -1.65280032e-02, -6.63048889e-03,
+         3.80810324e-03,  9.31410835e-02, -1.53761324e+00]])
+</code></pre>
+<p data-line="1638" class="code-line">Using <em>scipy</em> to check the result:</p>
+<pre><code data-line="1640" class="code-line language-python"><div><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression <span class="hljs-keyword">as</span> lm
+l=lm().fit(X, y)
+l.coef_
+</div></code></pre>
+<pre data-line="1646" class="code-line"><code>array([[ 6.42053134e-02,  6.45735927e-03,  1.24041896e-04,
+        -1.65280033e-02, -6.63048889e-03,  3.80810324e-03,
+         9.31410835e-02, -1.53761324e+00]])
+</code></pre>
+<p data-line="1650" class="code-line">Works fine (some differences due to SVD used in <em>sklearn.LinearRegression</em>).</p>
+<h3 id="2-fomula-and-r-squre-2" data-line="1652" class="code-line">2. Fomula and R squre</h3>
+<p data-line="1654" class="code-line"><em>Write down the mathematical formula for the linear model and evaluate the model R squre on the training set and the testing set.</em></p>
+<pre><code data-line="1656" class="code-line language-python"><div>df1_train.columns
+</div></code></pre>
+<pre data-line="1660" class="code-line"><code>Index(['MEI', 'CO2', 'CH4', 'N2O', 'CFC-11', 'CFC-12', 'TSI', 'Aerosols',
+       'Temp'],
+      dtype='object')
+</code></pre>
+<p data-line="1664" class="code-line"><strong>Formula of this model</strong>(<code>round(5)</code>)</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>T</mi><mi>e</mi><mi>m</mi><mi>p</mi></mrow><mo>^</mo></mover><mo>=</mo><mo>−</mo><mn>1</mn><mn>2</mn><mn>4</mn><mi mathvariant="normal">.</mi><mn>5</mn><mn>9</mn><mn>4</mn><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>6</mn><mn>4</mn><mn>2</mn><mn>1</mn><mo>∗</mo><mi>M</mi><mi>E</mi><mi>I</mi><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>0</mn><mn>6</mn><mn>4</mn><mn>6</mn><mo>∗</mo><mi>C</mi><msub><mi>O</mi><mn>2</mn></msub><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn><mn>2</mn><mo>∗</mo><mi>C</mi><msub><mi>H</mi><mn>4</mn></msub><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>1</mn><mn>6</mn><mn>5</mn><mn>3</mn><mo>∗</mo><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>0</mn><mn>6</mn><mn>6</mn><mn>3</mn><mo>∗</mo><mi>C</mi><mi>F</mi><mi>C</mi><mn>1</mn><mn>1</mn><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>0</mn><mn>3</mn><mn>8</mn><mn>1</mn><mo>∗</mo><mi>C</mi><mi>F</mi><mi>C</mi><mn>1</mn><mn>2</mn><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>9</mn><mn>3</mn><mn>1</mn><mn>4</mn><mo>∗</mo><mi>T</mi><mi>S</mi><mi>I</mi><mo>−</mo><mn>1</mn><mi mathvariant="normal">.</mi><mn>5</mn><mn>3</mn><mn>7</mn><mn>6</mn><mn>1</mn><mo>∗</mo><mi>A</mi><mi>e</mi><mi>r</mi><mi>o</mi><mi>s</mi><mi>o</mi><mi>l</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">\hat{Temp}=-124.594+0.06421*MEI +0.00646*CO_2+0.00012*CH_4-0.01653*N_2O-0.00663*CFC11+0.00381*CFC12+0.09314*TSI-1.53761*Aerosols</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9467699999999999em;"></span><span class="strut bottom" style="height:1.1412099999999998em;vertical-align:-0.19444em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit">e</span><span class="mord mathit">m</span><span class="mord mathit">p</span></span></span><span style="top:-0.25233em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">4</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathrm">9</span><span class="mord mathrm">4</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">6</span><span class="mord mathrm">4</span><span class="mord mathrm">2</span><span class="mord mathrm">1</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mord mathit" style="margin-right:0.07847em;">I</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">6</span><span class="mord mathrm">4</span><span class="mord mathrm">6</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.08125em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mord mathrm">5</span><span class="mord mathrm">3</span><span class="mbin">∗</span><span class="mord"><span class="mord mathit" style="margin-right:0.10903em;">N</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.10903em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mbin">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">6</span><span class="mord mathrm">6</span><span class="mord mathrm">3</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">3</span><span class="mord mathrm">8</span><span class="mord mathrm">1</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">9</span><span class="mord mathrm">3</span><span class="mord mathrm">1</span><span class="mord mathrm">4</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathit" style="margin-right:0.07847em;">I</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathrm">3</span><span class="mord mathrm">7</span><span class="mord mathrm">6</span><span class="mord mathrm">1</span><span class="mbin">∗</span><span class="mord mathit">A</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">o</span><span class="mord mathit">s</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">s</span></span></span></span></span></p>
+<p data-line="1667" class="code-line"><strong>Formula of R-squred</strong><br>
+R-squared measures model fitting and can be calculated as:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mfrac><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>X</mi><mover accent="true"><mrow><mi>β</mi></mrow><mo>^</mo></mover><mo>)</mo></mrow><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mo>(</mo><mi>y</mi><mo>)</mo></mrow></mfrac><mo>=</mo><mfrac><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><mo>(</mo><msub><mover accent="true"><mrow><mi>y</mi></mrow><mo>^</mo></mover><mi>i</mi></msub><mo>−</mo><mover accent="true"><mrow><mi>y</mi></mrow><mo>¯</mo></mover><msup><mo>)</mo><mn>2</mn></msup></mrow><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><mo>(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><mover accent="true"><mrow><mi>y</mi></mrow><mo>¯</mo></mover><msup><mo>)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">R^2 = \frac{var(X\hat{\beta})}{var(y)} = \frac{\sum_{i=1}^{n}(\hat{y}_i-\bar{y})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6348799999999999em;"></span><span class="strut bottom" style="height:2.62089em;vertical-align:-0.98601em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><span style="top:-0.2300000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.05278em;">β</span></span></span><span style="top:-0.26343999999999995em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mop"><span class="op-symbol small-op mop" style="top:-0.0000050000000000050004em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span style="top:0em;margin-left:0.11112em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>¯</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.69001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mop"><span class="op-symbol small-op mop" style="top:-0.0000050000000000050004em;">∑</span><span class="vlist"><span style="top:0.30001em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.364em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span style="top:0em;margin-left:0.11112em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span style="top:0em;margin-left:0.11112em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body"><span>¯</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<pre><code data-line="1671" class="code-line language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">predict</span><span class="hljs-params">(X: np.ndarray, theta: np.ndarray)</span> -&gt; np.ndarray:</span>
+    <span class="hljs-string">"""
+    To predict y given X and theta.
+
+    Parameters:
+    ----------
+
+        X: features, IV.
+        theta: coefficients.
+
+    Return:
+    ----------
+        y_hat: predicted value.
+    """</span>
+
+    X = np.column_stack((np.ones(len(X)), X))  <span class="hljs-comment"># add x0 = 1 to matrix X</span>
+    theta = theta.reshape((<span class="hljs-number">1</span>, len(theta)))
+    y_hat = np.sum(X * theta, axis=<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">return</span> (y_hat)
+
+</div></code></pre>
+<p data-line="1694" class="code-line">Define a <code>score</code> function to calculate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>:</p>
+<pre><code data-line="1696" class="code-line language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">score</span><span class="hljs-params">(y: np.ndarray, y_hat: np.ndarray)</span> -&gt; float:</span>
+    <span class="hljs-string">"""
+    To calculate OLS R^2 given data in ndarrays.
+
+    Parameters:
+    ----------
+        y: actual labels.
+        y_hat: predicted values.
+
+    Return:
+    ----------
+        SST: R^2 caculated based on y and y_hat.
+    """</span>
+
+    mean = y.mean()
+    TSS = np.sum(np.square(y_hat - mean))
+    ESS = np.sum(np.square(y - mean))
+    SST = TSS / ESS
+    <span class="hljs-keyword">return</span> SST
+</div></code></pre>
+<p data-line="1718" class="code-line">On training set:</p>
+<pre><code data-line="1720" class="code-line language-python"><div>X = df1_train.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+rsquare_train = score(y, predict(X, closed_form_1(X, y)))
+print(<span class="hljs-string">"R2:"</span>, rsquare_train)
+
+<span class="hljs-comment"># Use *scipy* to check the result:</span>
+l=lm().fit(X, y)
+print(<span class="hljs-string">"R2 by scipy:"</span>, l.score(X, y))
+</div></code></pre>
+<pre data-line="1731" class="code-line"><code>R2: 0.7508932770388234
+R2 by scipy: 0.7508932770523428
+</code></pre>
+<p data-line="1734" class="code-line">On testing set:</p>
+<pre><code data-line="1736" class="code-line language-python"><div>rsquare_test = score(y_test, predict(X_test, closed_form_1(X, y)))
+print(<span class="hljs-string">"R2:"</span>, rsquare_test)
+</div></code></pre>
+<pre data-line="1741" class="code-line"><code>R2: 0.22517701916248536
+</code></pre>
+<p data-line="1743" class="code-line">Works fine.</p>
+<p data-line="1745" class="code-line"><strong>Evaluation</strong></p>
+<p data-line="1747" class="code-line">Based on the formula above, R-squred can be applied in Python to evaluate previous model. On training set: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> is 0.75089, while on testing set, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> is 0.22518.</p>
+<p data-line="1749" class="code-line">*** <em>However, for a multi-variable linear model, $R^{2}</em>{adjusted}$ may be a better indicator because the original $R^{2}$ is sensitive to the number of features._</p>
+<h3 id="3-significant-variables-2" data-line="1751" class="code-line">3. Significant variables</h3>
+<p data-line="1753" class="code-line"><em>Which variables are significant in the model?</em></p>
+<pre><code data-line="1755" class="code-line language-python"><div><span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm
+
+<span class="hljs-comment"># set an alpha</span>
+alpha = <span class="hljs-number">0.05</span>
+
+X2 = sm.add_constant(X)
+l = sm.OLS(y, X2).fit()
+pvalues = l.summary2().tables[<span class="hljs-number">1</span>][<span class="hljs-string">'P&gt;|t|'</span>]
+labels =  [<span class="hljs-string">'x0: constant'</span>] + [<span class="hljs-string">"x"</span> + str(i+<span class="hljs-number">1</span>) + <span class="hljs-string">": "</span> + df1_train.columns[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(df1_train.columns)<span class="hljs-number">-1</span>)]
+variables = pd.DataFrame(np.concatenate([pd.DataFrame(labels), pd.DataFrame(pvalues)], axis=<span class="hljs-number">1</span>))
+variables.columns = [<span class="hljs-string">'Variable'</span>, <span class="hljs-string">'pvalues'</span>]
+
+<span class="hljs-comment"># print significant variables</span>
+variables[variables.pvalues &lt; alpha]
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1778" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variable</th>
+      <th>pvalues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>x0: constant</td>
+      <td>1.43105e-09</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>x1: MEI</td>
+      <td>4.89889e-20</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>x2: CO2</td>
+      <td>0.00505252</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>x5: CFC-11</td>
+      <td>5.95729e-05</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>x6: CFC-12</td>
+      <td>0.00020972</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>x7: TSI</td>
+      <td>1.09594e-09</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>x8: Aerosols</td>
+      <td>5.41127e-12</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p data-line="1835" class="code-line">That's to say, significant(alpha=0.05) varibles are:</p>
+<pre><code data-line="1837" class="code-line language-python"><div>[i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> variables[variables.pvalues &lt; alpha].Variable.to_numpy()]
+</div></code></pre>
+<pre data-line="1841" class="code-line"><code>['x0: constant',
+ 'x1: MEI',
+ 'x2: CO2',
+ 'x5: CFC-11',
+ 'x6: CFC-12',
+ 'x7: TSI',
+ 'x8: Aerosols']
+</code></pre>
+<h3 id="4-necessary-conditions-and-application-2" data-line="1849" class="code-line">4. Necessary conditions and application</h3>
+<p data-line="1851" class="code-line"><em>Write down the necessary conditions for using the closed form solution. And you can apply it to the dataset climate_change_2.csv, explain the solution is unreasonable.</em></p>
+<p data-line="1853" class="code-line"><strong>Necessary conditions</strong><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">X^TX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> must be invertible.</p>
+<pre><code data-line="1856" class="code-line language-python"><div>df2.head(<span class="hljs-number">2</span>)
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1866" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1983</td>
+      <td>5</td>
+      <td>2.556</td>
+      <td>345.96</td>
+      <td>1638.59</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1366.1024</td>
+      <td>0.0863</td>
+      <td>2.63859</td>
+      <td>0.109</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1983</td>
+      <td>6</td>
+      <td>2.167</td>
+      <td>345.52</td>
+      <td>1633.71</td>
+      <td>303.746</td>
+      <td>192.057</td>
+      <td>351.848</td>
+      <td>1366.1208</td>
+      <td>0.0794</td>
+      <td>2.63371</td>
+      <td>0.118</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="1928" class="code-line language-python"><div><span class="hljs-comment"># Df2 trainset</span>
+df2_train = df2[df2[<span class="hljs-string">'Year'</span>]&lt;=<span class="hljs-number">2006</span>].iloc[:,<span class="hljs-number">2</span>:]
+<span class="hljs-comment"># Check the result</span>
+df2_train.iloc[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>,<span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>],:]
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="1941" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.556</td>
+      <td>345.96</td>
+      <td>1638.59</td>
+      <td>303.677</td>
+      <td>191.324</td>
+      <td>350.113</td>
+      <td>1366.1024</td>
+      <td>0.0863</td>
+      <td>2.63859</td>
+      <td>0.109</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2.167</td>
+      <td>345.52</td>
+      <td>1633.71</td>
+      <td>303.746</td>
+      <td>192.057</td>
+      <td>351.848</td>
+      <td>1366.1208</td>
+      <td>0.0794</td>
+      <td>2.63371</td>
+      <td>0.118</td>
+    </tr>
+    <tr>
+      <td>282</td>
+      <td>1.292</td>
+      <td>380.18</td>
+      <td>1791.91</td>
+      <td>320.321</td>
+      <td>248.605</td>
+      <td>539.500</td>
+      <td>1365.7039</td>
+      <td>0.0049</td>
+      <td>2.79191</td>
+      <td>0.440</td>
+    </tr>
+    <tr>
+      <td>283</td>
+      <td>0.951</td>
+      <td>381.79</td>
+      <td>1795.04</td>
+      <td>320.451</td>
+      <td>248.480</td>
+      <td>539.377</td>
+      <td>1365.7087</td>
+      <td>0.0054</td>
+      <td>2.79504</td>
+      <td>0.518</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="2023" class="code-line language-python"><div><span class="hljs-comment"># Df2 testet</span>
+df2_test = df2[df2[<span class="hljs-string">'Year'</span>]&gt;<span class="hljs-number">2006</span>].iloc[:,<span class="hljs-number">2</span>:]
+<span class="hljs-comment"># Check the result</span>
+df2_test.iloc[[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>,<span class="hljs-number">-2</span>, <span class="hljs-number">-1</span>],:]
+</div></code></pre>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre data-line="2036" class="code-line"><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MEI</th>
+      <th>CO2</th>
+      <th>CH4</th>
+      <th>N2O</th>
+      <th>CFC-11</th>
+      <th>CFC-12</th>
+      <th>TSI</th>
+      <th>Aerosols</th>
+      <th>NO</th>
+      <th>Temp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>284</td>
+      <td>0.974</td>
+      <td>382.93</td>
+      <td>1799.66</td>
+      <td>320.561</td>
+      <td>248.372</td>
+      <td>539.206</td>
+      <td>1365.7173</td>
+      <td>0.0054</td>
+      <td>2.79966</td>
+      <td>0.601</td>
+    </tr>
+    <tr>
+      <td>285</td>
+      <td>0.510</td>
+      <td>383.81</td>
+      <td>1803.08</td>
+      <td>320.571</td>
+      <td>248.264</td>
+      <td>538.973</td>
+      <td>1365.7145</td>
+      <td>0.0051</td>
+      <td>2.80308</td>
+      <td>0.498</td>
+    </tr>
+    <tr>
+      <td>306</td>
+      <td>-0.621</td>
+      <td>384.13</td>
+      <td>1812.37</td>
+      <td>322.013</td>
+      <td>244.225</td>
+      <td>534.906</td>
+      <td>1365.7065</td>
+      <td>0.0048</td>
+      <td>2.81237</td>
+      <td>0.394</td>
+    </tr>
+    <tr>
+      <td>307</td>
+      <td>-0.666</td>
+      <td>385.56</td>
+      <td>1812.88</td>
+      <td>322.182</td>
+      <td>244.204</td>
+      <td>535.005</td>
+      <td>1365.6926</td>
+      <td>0.0046</td>
+      <td>2.81288</td>
+      <td>0.330</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<pre><code data-line="2118" class="code-line language-python"><div><span class="hljs-comment"># Given X, and y in numpy arrays</span>
+X_2 = df2_train.drop(df2_train.columns[<span class="hljs-number">9</span>], axis=<span class="hljs-number">1</span>).to_numpy() <span class="hljs-comment"># X: the features</span>
+y_2 = df2_train.iloc[:, [<span class="hljs-number">9</span>]].to_numpy()                       <span class="hljs-comment"># y: the results, lower case to emphasize the difference</span>
+X_2_test = df2_test.drop(df2_test.columns[<span class="hljs-number">9</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y_2_test = df2_test.iloc[:, [<span class="hljs-number">9</span>]].to_numpy()
+theta = closed_form_1(X_2, y_2)
+theta
+</div></code></pre>
+<pre data-line="2128" class="code-line"><code>array([[-1.18459383e+02],
+       [ 6.41762745e-02],
+       [ 6.48209178e-03],
+       [ 6.24389931e-03],
+       [-1.65280032e-02],
+       [-6.63048889e-03],
+       [ 3.80810324e-03],
+       [ 9.31410835e-02],
+       [-1.53761324e+00],
+       [-6.12593018e+00]])
+</code></pre>
+<p data-line="2139" class="code-line"><strong>Why unreasonable:</strong><br>
+Because <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">X^TX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> is non-invertible.</p>
+<p data-line="2142" class="code-line">According to <a href="https://www.coursera.org/learn/machine-learning/supplement/66bi5/normal-equation-noninvertibility" data-href="https://www.coursera.org/learn/machine-learning/supplement/66bi5/normal-equation-noninvertibility">Andrew NG</a>,</p>
+<blockquote data-line="2144" class="code-line">
+<p data-line="2144" class="code-line">When implementing the normal equation in octave we want to use the <code>pinv</code> function rather than <code>inv</code>. The 'pinv' function will give you a value of \thetaθ even if <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">X^TX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> is not invertible.<br>
+If <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>X</mi><mi>T</mi></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">X^TX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> is noninvertible, the common causes might be having :</p>
+<ul>
+<li data-line="2147" class="code-line"><strong>Redundant features</strong>, where two features are very closely related (i.e. they are linearly dependent)</li>
+<li data-line="2148" class="code-line"><strong>Too many features</strong> (e.g. m ≤ n). In this case, delete some features or use &quot;regularization&quot; (to be explained in a later lesson).</li>
+</ul>
+<p data-line="2150" class="code-line">Solutions to the above problems include deleting a feature that is linearly dependent with another or deleting one or more features when there are too many features.</p>
+</blockquote>
+<p data-line="2152" class="code-line">In this case, many variables (as mentioned in the first section exploration) are highly correlated.</p>
+<hr>
+<h2 id="problem-2--regularization-2" data-line="2156" class="code-line">Problem 2 — Regularization</h2>
+<p data-line="2158" class="code-line"><em>Regularization is a method to boost robustness of model, including L1 regularization and L_2 regularization.</em></p>
+<h3 id="1-loss-function-2" data-line="2160" class="code-line">1. Loss function</h3>
+<p data-line="2162" class="code-line"><em>Please write down the loss function for linear model with L1 regularization, L2
+regularization, respectively.</em></p>
+<p data-line="2165" class="code-line"><strong>L1， Lasso Regression:</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mrow><mo fence="true">(</mo><mi>θ</mi><mo fence="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>[</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>m</mi></mrow></msubsup><mrow><mrow><msup><mrow><mo>(</mo><mrow><msub><mi>h</mi><mi>θ</mi></msub></mrow><mo>(</mo><mrow><msup><mrow><mi>x</mi></mrow><mrow><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msup></mrow><mo>)</mo><mo>−</mo><mrow><msup><mrow><mi>y</mi></mrow><mrow><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msup></mrow><mo>)</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow><mo>+</mo><mi>λ</mi><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><mrow><mi mathvariant="normal">∣</mi><msub><mi>θ</mi><mrow><mi>j</mi></mrow></msub><mi mathvariant="normal">∣</mi></mrow><mo>]</mo></mrow></mrow><annotation encoding="application/x-tex">J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{|\theta _{j}|}]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6513970000000007em;"></span><span class="strut bottom" style="height:3.0651740000000007em;vertical-align:-1.4137769999999998em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mord mathit">m</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mopen">[</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mopen">(</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit">h</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.02778em;">θ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mopen">(</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">x</span></span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span></span><span class="vlist"><span style="top:-0.5519999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mord mathit">λ</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000254801em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000005em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">∣</span><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">∣</span></span><span class="mclose">]</span></span></span></span></span></span></p>
+<p data-line="2168" class="code-line"><strong>L2， Ridge Regression:</strong></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>J</mi><mrow><mo fence="true">(</mo><mi>θ</mi><mo fence="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac><mo>[</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>m</mi></mrow></msubsup><mrow><mrow><msup><mrow><mo>(</mo><mrow><msub><mi>h</mi><mi>θ</mi></msub></mrow><mo>(</mo><mrow><msup><mrow><mi>x</mi></mrow><mrow><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msup></mrow><mo>)</mo><mo>−</mo><mrow><msup><mrow><mi>y</mi></mrow><mrow><mo>(</mo><mi>i</mi><mo>)</mo></mrow></msup></mrow><mo>)</mo></mrow><mrow><mn>2</mn></mrow></msup></mrow><mo>+</mo><mi>λ</mi><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>n</mi></mrow></msubsup><mrow><msubsup><mi>θ</mi><mrow><mi>j</mi></mrow><mrow><mn>2</mn></mrow></msubsup></mrow><mo>]</mo></mrow></mrow><annotation encoding="application/x-tex">J\left( \theta  \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta _{j}^{2}}]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6513970000000007em;"></span><span class="strut bottom" style="height:3.0651740000000007em;vertical-align:-1.4137769999999998em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.09618em;">J</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">(</span><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="style-wrap reset-textstyle textstyle uncramped" style="top:0em;">)</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span><span class="mord mathit">m</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mopen">[</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">m</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mopen">(</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit">h</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.02778em;">θ</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mopen">(</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">x</span></span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mopen">(</span><span class="mord mathit">i</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span></span><span class="vlist"><span style="top:-0.5519999999999999em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mord mathit">λ</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000254801em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000005em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord displaystyle textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">θ</span><span class="vlist"><span style="top:0.24700000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span><span style="top:-0.41300000000000003em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">]</span></span></span></span></span></span></p>
+<h3 id="2-compute-and-regularization-2" data-line="2171" class="code-line">2. Compute and regularization</h3>
+<p data-line="2173" class="code-line"><em>The closed form solution for linear model with L2 regularization:</em></p>
+𝛉 = (𝐗^𝐓𝐗 + 𝛌𝐈)^{−𝟏}𝐗^𝐓𝐘
+<p data-line="2175" class="code-line"><em>where I is the identity matrix.
+Write a function closed_form_2 that computes this
+closed form solution given the features X, labels Y and the regularization
+parameter λ (using Python or Matlab).</em></p>
+<pre><code data-line="2180" class="code-line language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">closed_form_2</span><span class="hljs-params">(X: np.ndarray, y: np.ndarray, lambd: float)</span> -&gt; np.ndarray:</span>
+    <span class="hljs-string">"""
+    To calculate OLS theta(s) given X, y in ndarrays.
+
+    Parameters:
+    ----------
+        X: features, IV.
+        y: taget variable, DV.
+        lambd: regularization parameter
+    Return:
+    ----------
+        theta: coefficients
+    """</span>
+
+    X = np.concatenate([np.ones((len(X), <span class="hljs-number">1</span>)), X], axis=<span class="hljs-number">1</span>)  <span class="hljs-comment"># add x0 = 1 to matrix X</span>
+    I = np.identity(len(X[<span class="hljs-number">0</span>]))
+    theta = inv(X.T @ X + lambd * I) @ (X.T @ y)
+    <span class="hljs-keyword">return</span> theta
+</div></code></pre>
+<pre><code data-line="2201" class="code-line language-python"><div>len(X[<span class="hljs-number">0</span>])
+</div></code></pre>
+<pre data-line="2205" class="code-line"><code>8
+</code></pre>
+<h3 id="3-comparison-2" data-line="2207" class="code-line">3. Comparison</h3>
+<p data-line="2209" class="code-line"><em>Compare the two solutions in problem 1 and problem 2 and explain the reason why linear model with L2 regularization is robust. (using climate_change_1.csv)</em></p>
+<pre><code data-line="2211" class="code-line language-python"><div>X_train = df1_train.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y_train = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+theta_0 = closed_form_1(X_train, y_train)
+theta_0
+</div></code></pre>
+<pre data-line="2218" class="code-line"><code>array([[-1.24594260e+02],
+       [ 6.42053134e-02],
+       [ 6.45735927e-03],
+       [ 1.24041896e-04],
+       [-1.65280032e-02],
+       [-6.63048889e-03],
+       [ 3.80810324e-03],
+       [ 9.31410835e-02],
+       [-1.53761324e+00]])
+</code></pre>
+<pre><code data-line="2228" class="code-line language-python"><div>theta_2 = closed_form_2(X_train, y_train, <span class="hljs-number">0.5</span>)
+theta_2
+</div></code></pre>
+<pre data-line="2233" class="code-line"><code>array([[-4.68953239e-03],
+       [ 4.55768014e-02],
+       [ 7.80443532e-03],
+       [ 1.95701031e-04],
+       [-1.64893727e-02],
+       [-6.38359095e-03],
+       [ 3.74766007e-03],
+       [ 1.44919104e-03],
+       [-3.65599605e-01]])
+</code></pre>
+<pre><code data-line="2243" class="code-line language-python"><div>rsquare_test_theta_0 = score(y_test, predict(X_test, theta_0))
+rsquare_test_theta_2 = score(y_test, predict(X_test, theta_2))
+print(<span class="hljs-string">"R2:"</span>, rsquare_test_theta_0, rsquare_test_theta_2)
+</div></code></pre>
+<pre data-line="2249" class="code-line"><code>R2: 0.22517701916248536 0.8022366128860412
+</code></pre>
+<p data-line="2251" class="code-line">Obviously, theta_2, which is the result of ridge regression, is much better due to the lower effect of redundant variables.</p>
+<h3 id="4-change-cebb-2" data-line="2253" class="code-line">4. Change λ</h3>
+<p data-line="2255" class="code-line"><em>You can change the regularization parameter λ to get different solutions for this problem. Suppose we set λ = 10, 1, 0.1, 0.01, 0.001, and please evaluate the model</em> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>R</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">R^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.00773em;">R</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> <em>on the training set and the testing set.</em></p>
+<pre><code data-line="2257" class="code-line language-python"><div><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> mean_squared_error <span class="hljs-keyword">as</span> mse
+
+<span class="hljs-comment"># Define constants</span>
+X_train = df1_train.drop(df1_train.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y_train = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+X_test = df1_test.drop(df1_test.columns[<span class="hljs-number">8</span>], axis=<span class="hljs-number">1</span>).to_numpy()
+y_test = df1_test.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+lambds = [<span class="hljs-number">10.00</span>, <span class="hljs-number">1.000</span>, <span class="hljs-number">0.10</span>, <span class="hljs-number">0.01</span>, <span class="hljs-number">0.001</span>]
+
+print(<span class="hljs-string">"R scores comparison"</span>)
+<span class="hljs-comment"># print("λ　　　　　　Training R2　　　　　　Testing R2 　　　　　　Testing MSE")</span>
+print(<span class="hljs-string">"λ　　　　　　Training R2　　　　　　Testing R2"</span>)
+<span class="hljs-keyword">for</span> lambd <span class="hljs-keyword">in</span> lambds:
+    theta = closed_form_2(X_train, y_train, lambd)
+    rsquare_train = score(y_train, predict(X_train, theta))
+    rsquare_test = score(y_test, predict(X_test, theta))
+    <span class="hljs-comment"># meanse = mse(y_test, predict(X_test, theta))</span>
+    <span class="hljs-comment"># print(lambd, "　　　　", rsquare_train.round(5), "　　　　　　　", rsquare_test.round(5), "　　　　　　　", meanse.round(5))</span>
+    print(lambd, <span class="hljs-string">"　　　　"</span>, rsquare_train.round(<span class="hljs-number">5</span>), <span class="hljs-string">"　　　　　　　"</span>, rsquare_test.round(<span class="hljs-number">5</span>))
+</div></code></pre>
+<pre data-line="2279" class="code-line"><code>R scores comparison
+λ　　　　　　Training R2　　　　　　Testing R2
+10.0 　　　　 0.67461 　　　　　　　 0.94087
+1.0 　　　　 0.67947 　　　　　　　 0.84675
+0.1 　　　　 0.69447 　　　　　　　 0.67329
+0.01 　　　　 0.71165 　　　　　　　 0.58528
+0.001 　　　　 0.71483 　　　　　　　 0.56252
+</code></pre>
+<p data-line="2287" class="code-line"><em>Finally, please decide the best regularization parameter λ. (Note that: As a qualified data analyst, you must know how to choose model parameters, please learn about cross validation methods.)</em></p>
+<pre><code data-line="2289" class="code-line language-python"><div><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> KFold
+<span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> Ridge
+<span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> GridSearchCV
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cross_validation</span><span class="hljs-params">(X, y)</span>:</span>
+    <span class="hljs-string">"""
+    Using k-fold to get optimal value of lambda based on R-squared.
+
+    Parameters:
+    ----------
+        X: features, IV.
+        y: taget variable, DV.
+    Return:
+    ----------
+        alpha: learning rate
+    """</span>
+    kfold = KFold(n_splits=<span class="hljs-number">10</span>).split(X, y)
+    model = Ridge(normalize=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># Normalization returns better result</span>
+    lambdas = [<span class="hljs-number">10</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0.01</span>, <span class="hljs-number">0.001</span>]
+    grid_param = {<span class="hljs-string">"alpha"</span>: lambdas}
+    grid = GridSearchCV(estimator=model,
+                        param_grid=grid_param,
+                        cv=kfold,
+                        scoring=<span class="hljs-string">"r2"</span>)
+    grid.fit(X, y)
+    alpha = grid.best_params_[<span class="hljs-string">'alpha'</span>]
+    <span class="hljs-keyword">return</span> alpha
+
+
+print(<span class="hljs-string">'Optimal lamba should be '</span>, cross_validation(X_train, y_train))
+</div></code></pre>
+<pre data-line="2322" class="code-line"><code>Optimal lamba should be  0.1
+
+
+C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+</code></pre>
+<hr>
+<h2 id="problem-3--feature-selection-2" data-line="2330" class="code-line">Problem 3 — Feature Selection</h2>
+<h3 id="1-lesser-variables-2" data-line="2332" class="code-line">1. Lesser variables</h3>
+<p data-line="2334" class="code-line"><em>From Problem 1, you can know which variables are significant, therefore you can use less variables to train model. For example, remove highly correlated and redundant features. You can propose a workflow to select feature.</em></p>
+<p data-line="2336" class="code-line">As mentioned in the first section and known siginificant variables(MEI, CO2, CDC-11, CDC-12, TST, Aerocols), a new correlation matrix can be introduced:</p>
+<pre><code data-line="2338" class="code-line language-python"><div>corr = df1[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'CFC-11'</span>, <span class="hljs-string">'CFC-12'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].corr()
+high_corr = corr[np.abs(corr) &gt; <span class="hljs-number">0.5</span>].fillna(<span class="hljs-number">0</span>)
+corr[np.abs(corr) &gt; <span class="hljs-number">0.6</span>].fillna(<span class="hljs-string">''</span>)
+plt.figure(dpi=<span class="hljs-number">128</span>)
+ax = sns.heatmap(
+    high_corr,
+    vmin=<span class="hljs-number">-1</span>, vmax=<span class="hljs-number">1</span>, center=<span class="hljs-number">0</span>,
+    cmap=sns.diverging_palette(<span class="hljs-number">20</span>, <span class="hljs-number">220</span>, n=<span class="hljs-number">200</span>),
+    square=<span class="hljs-literal">True</span>
+)
+ax.set_xticklabels(
+    ax.get_xticklabels(),
+    rotation=<span class="hljs-number">45</span>,
+    horizontalalignment=<span class="hljs-string">'right'</span>
+);
+</div></code></pre>
+<p data-line="2356" class="code-line"><img src="./res/hw2/output_103_0.png" alt="png" class="loading" id="image-hash-500c11084a8303659d0ac726d8128ed0b96af25c1a1f2a9748c29121c8c6afdf"></p>
+<p data-line="2358" class="code-line">Thus, CFC-12 should also be removed(r&gt;0.6) then we have:</p>
+<pre><code data-line="2360" class="code-line language-python"><div>corr = df1[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'CFC-11'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].corr()
+high_corr = corr[np.abs(corr) &gt; <span class="hljs-number">0.5</span>].fillna(<span class="hljs-number">0</span>)
+corr[np.abs(corr) &gt; <span class="hljs-number">0.6</span>].fillna(<span class="hljs-string">''</span>)
+plt.figure(dpi=<span class="hljs-number">128</span>)
+ax = sns.heatmap(
+    high_corr,
+    vmin=<span class="hljs-number">-1</span>, vmax=<span class="hljs-number">1</span>, center=<span class="hljs-number">0</span>,
+    cmap=sns.diverging_palette(<span class="hljs-number">20</span>, <span class="hljs-number">220</span>, n=<span class="hljs-number">200</span>),
+    square=<span class="hljs-literal">True</span>
+)
+ax.set_xticklabels(
+    ax.get_xticklabels(),
+    rotation=<span class="hljs-number">45</span>,
+    horizontalalignment=<span class="hljs-string">'right'</span>
+);
+</div></code></pre>
+<p data-line="2378" class="code-line"><img src="./res/hw2/output_105_0.png" alt="png" class="loading" id="image-hash-0961beedf7c9fd8a765eb5dc1bc1f3944cef66163e0691c3bb5d941b39fce21c"></p>
+<p data-line="2380" class="code-line">Now no redundant variables left.</p>
+<h3 id="2-a-better-model-2" data-line="2382" class="code-line">2. A better model</h3>
+<p data-line="2384" class="code-line"><em>Train a better model than the model in Problem 2.</em></p>
+<pre><code data-line="2386" class="code-line language-python"><div>X_lesser = df1_train[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'CFC-11'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].to_numpy() <span class="hljs-comment"># X: the features</span>
+y_lesser = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()                                  <span class="hljs-comment"># y: the results, lower case to emphasize the difference</span>
+X_test = df1_test[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'CFC-11'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].to_numpy()
+y_test = df1_test.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+
+<span class="hljs-comment">#theta_lesser = closed_form_1(X_lesser, y_lesser)</span>
+theta_lesser = closed_form_2(X_lesser, y_train, cross_validation(X_lesser,y_lesser))
+theta_lesser = np.array(theta_lesser)
+formula = [str(theta_lesser.round(<span class="hljs-number">5</span>).tolist()[i][<span class="hljs-number">0</span>]) + <span class="hljs-string">' * x'</span> + str(i) + <span class="hljs-string">' + '</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(theta_lesser.round(<span class="hljs-number">5</span>).tolist()))]
+print(<span class="hljs-string">'Thus our better model is: \n\ny = '</span>+ <span class="hljs-string">' '</span>.join(formula).replace(<span class="hljs-string">' * x0'</span>, <span class="hljs-string">''</span>)[:<span class="hljs-number">-3</span>])
+</div></code></pre>
+<pre data-line="2399" class="code-line"><code>Thus our better model is:
+
+y = -0.02465 +  0.04909 * x1 +  0.0118 * x2 +  2e-05 * x3 +  -0.00293 * x4 +  -0.88807 * x5
+
+
+C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
+  DeprecationWarning)
+</code></pre>
+<p data-line="2407" class="code-line">Significance:</p>
+<pre><code data-line="2409" class="code-line language-python"><div>l = sm.OLS(y_lesser, X_lesser).fit()
+pvalues = l.summary2().tables[<span class="hljs-number">1</span>][<span class="hljs-string">'P&gt;|t|'</span>]
+pvalues&lt;<span class="hljs-number">0.05</span>
+</div></code></pre>
+<pre data-line="2415" class="code-line"><code>x1     True
+x2     True
+x3    False
+x4     True
+x5     True
+Name: P&gt;|t|, dtype: bool
+</code></pre>
+<p data-line="2422" class="code-line">Then remove x3 based on the new result:</p>
+<pre><code data-line="2424" class="code-line language-python"><div>X_lesser = df1_train[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].to_numpy() <span class="hljs-comment"># X: the features</span>
+y_lesser = df1_train.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()                                  <span class="hljs-comment"># y: the results, lower case to emphasize the difference</span>
+X_test = df1_test[[<span class="hljs-string">'MEI'</span>, <span class="hljs-string">'CO2'</span>, <span class="hljs-string">'TSI'</span>, <span class="hljs-string">'Aerosols'</span> ]].to_numpy()
+y_test = df1_test.iloc[:, [<span class="hljs-number">8</span>]].to_numpy()
+
+theta_lesser = closed_form_1(X_lesser, y_train)
+theta_lesser = np.array(theta_lesser)
+formula = [str(theta_lesser.round(<span class="hljs-number">5</span>).tolist()[i][<span class="hljs-number">0</span>]) + <span class="hljs-string">' * x'</span> + str(i) + <span class="hljs-string">' + '</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(theta_lesser.round(<span class="hljs-number">5</span>).tolist()))]
+print(<span class="hljs-string">'Thus our better model is: \n\ny = '</span>+ <span class="hljs-string">' '</span>.join(formula).replace(<span class="hljs-string">' * x0'</span>, <span class="hljs-string">''</span>)[:<span class="hljs-number">-3</span>])
+</div></code></pre>
+<pre data-line="2436" class="code-line"><code>Thus our better model is:
+
+y = -118.60162 +  0.06204 * x1 +  0.01069 * x2 +  0.08418 * x3 +  -1.58444 * x4
+</code></pre>
+<pre><code data-line="2440" class="code-line language-python"><div>l = sm.OLS(y_lesser, X_lesser).fit()
+pvalues = l.summary2().tables[<span class="hljs-number">1</span>][<span class="hljs-string">'P&gt;|t|'</span>]
+pvalues&lt;<span class="hljs-number">0.05</span>
+</div></code></pre>
+<pre data-line="2446" class="code-line"><code>x1    True
+x2    True
+x3    True
+x4    True
+Name: P&gt;|t|, dtype: bool
+</code></pre>
+<p data-line="2452" class="code-line">R2:</p>
+<pre><code data-line="2454" class="code-line language-python"><div>rsquare_train = score(y_lesser, predict(X_lesser, theta_lesser))
+rsquare_test = score(y_test, predict(X_test, theta_lesser))
+print((<span class="hljs-string">'R2\nTraining: {}\nTesting: {}'</span>).format(rsquare_train, rsquare_test))
+</div></code></pre>
+<pre data-line="2460" class="code-line"><code>R2
+Training: 0.7336403428986277
+Testing: 0.6328867941215359
+</code></pre>
+<hr>
+<h2 id="problem-4--gradient-descent-2" data-line="2466" class="code-line">Problem 4 — Gradient Descent</h2>
+<p data-line="2468" class="code-line"><em>Gradient descent algorithm is an iterative process that takes us to the minimum of a function. Please write down the iterative expression for updating the solution of linear model and implement it using Python or Matlab in gradientDescent function.</em></p>
+<h3 id="define-functions-2" data-line="2470" class="code-line">Define functions</h3>
+<pre><code data-line="2472" class="code-line language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cost_function</span><span class="hljs-params">(X: np.ndarray, y: np.ndarray, theta: np.ndarray)</span> -&gt; float:</span>
+    <span class="hljs-string">"""
+    To calculate cost given X, y, and theta in ndarrays.
+
+    Parameters:
+    ----------
+        X: features, IV.
+        y: taget variable, DV.
+        theta: coefficients
+    Return:
+    ----------
+        cost: calculated cost
+    """</span>
+    cost = np.sum(np.power((X * theta.T) - y, <span class="hljs-number">2</span>)) / (<span class="hljs-number">2</span> * len(X))
+    <span class="hljs-keyword">return</span> cost
+
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gradientDescent</span><span class="hljs-params">(X: np.ndarray, y: np.ndarray, theta: np.ndarray,
+                    alpha: float,  iters: float)</span> -&gt; np.matrix and np.ndarray:</span>
+    <span class="hljs-string">"""
+    To find theta given X, y, theta in ndarrays and alpha, iters in float.
+
+    Parameters:
+    ----------
+        X: features, IV.
+        y: taget variable, DV.
+        theta: coefficients
+        alpha: learning rate
+        iters: an assigned number of iterations
+    Return:
+    ----------
+        theta: np.matrix, final theta
+        cost: np.ndarray, calculated cost
+    """</span>
+
+    temp = np.mat(np.zeros(theta.shape))
+    cost = np.zeros(iters)
+    thetaNums = int(theta.shape[<span class="hljs-number">1</span>])
+
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(iters):
+        error = (X * theta.T - y)
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(thetaNums):
+            derivativeInner = np.multiply(error, X[:, j])
+            temp[<span class="hljs-number">0</span>, j] = theta[<span class="hljs-number">0</span>, j] - (alpha * np.sum(derivativeInner) /
+                                        len(X))
+        theta = temp
+        cost[i] = cost_function(X, y, theta)
+    <span class="hljs-keyword">return</span> theta, cost
+
+</div></code></pre>
+<h3 id="define-parameters-2" data-line="2524" class="code-line">Define parameters</h3>
+<pre><code data-line="2526" class="code-line language-python"><div><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+
+theta = np.mat([<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>])
+iters = <span class="hljs-number">5000</span> <span class="hljs-comment"># The number of iterations</span>
+alpha = <span class="hljs-number">0.01</span> <span class="hljs-comment"># Learning rate</span>
+
+X = df1.get([<span class="hljs-string">"MEI"</span>,<span class="hljs-string">"CO2"</span>,<span class="hljs-string">"CH4"</span>,<span class="hljs-string">"N2O"</span>,<span class="hljs-string">"CFC-11"</span>,<span class="hljs-string">"CFC-12"</span>,<span class="hljs-string">"TSI"</span>,<span class="hljs-string">"Aerosols"</span>])
+X = np.column_stack((np.ones(len(X)),X))
+X_train = X[:<span class="hljs-number">284</span>]
+X_test = X[<span class="hljs-number">284</span>:]
+X_train = np.mat(X_train)
+
+y = df1.get(<span class="hljs-string">"Temp"</span>)
+y_train = y[:<span class="hljs-number">284</span>]
+y_test = y[<span class="hljs-number">284</span>:]
+
+y_train = np.mat(y_train).T
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">9</span>):
+    X_train[:,i] = (X_train[:,i] - min(X_train[:,i])) / (max(X_train[:,i]) - min(X_train[:,i]))
+
+theta_n = (X_train.T*X_train).I*X_train.T*y_train
+print(<span class="hljs-string">"theta ="</span>,theta_n)
+</div></code></pre>
+<pre data-line="2553" class="code-line"><code>theta = [[-0.07698894]
+ [ 0.29450977]
+ [ 0.28935427]
+ [ 0.02211171]
+ [-0.27724073]
+ [-0.53156629]
+ [ 0.7376296 ]
+ [ 0.17604596]
+ [-0.22725924]]
+</code></pre>
+<h3 id="find-theta-2" data-line="2563" class="code-line">Find theta</h3>
+<pre><code data-line="2565" class="code-line language-python"><div>finalTheta,cost = gradientDescent(X_train,y_train,theta,alpha,iters)
+</div></code></pre>
+<h3 id="check-the-result-2" data-line="2569" class="code-line">Check the result</h3>
+<pre><code data-line="2571" class="code-line language-python"><div>fig, bx = plt.subplots(figsize=(<span class="hljs-number">8</span>,<span class="hljs-number">6</span>))
+bx.plot(np.arange(iters), cost, <span class="hljs-string">'r'</span>)
+bx.set_xlabel(<span class="hljs-string">'Iterations'</span>)
+bx.set_ylabel(<span class="hljs-string">'Cost'</span>)
+bx.set_title(<span class="hljs-string">'Error vs. Training Epoch'</span>)
+plt.show()
+</div></code></pre>
+<p data-line="2580" class="code-line"><img src="./res/hw2/output_125_0.png" alt="png" class="loading" id="image-hash-9471999dab874b0d17f1e1fc3a7ca3aace9e70bb4a9249cd70fd848c66f4cf66"></p>
+<p data-line="2582" class="code-line">The result indicates that algorithm has converged and the final theta is</p>
+<pre><code data-line="2584" class="code-line language-python"><div>print(<span class="hljs-string">"Final theta "</span>,finalTheta, <span class="hljs-string">'with cost'</span>, cost)
+</div></code></pre>
+<pre data-line="2588" class="code-line"><code>Final theta  [[-0.07049773  0.19881777  0.19132161  0.06760065  0.18431036 -0.08700985
+   0.08339899  0.1001724  -0.16872269]] with cost [0.0444738  0.04207593 0.0398436  ... 0.0044812  0.0044811  0.004481  ]
+</code></pre>
+<pre><code data-line="2591" class="code-line language-python"><div>
+</div></code></pre>
+
+</body></html>
