@@ -9,6 +9,7 @@
 
 - #0: [Create a course repo](https://github.com/reycn/PHBS_BIGDATA_2019)
 - #1: [Find a big data problem](https://github.com/reycn/PHBS_BIGDATA_2019/blob/master/Homework/Homework_1.md)
+- #2: [Linear regression](https://github.com/reycn/PHBS_BIGDATA_2019/blob/master/Homework/Homework_2.md) / [PDF](https://github.com/reycn/PHBS_BIGDATA_2019/blob/master/Homework/Homework_2.pdf)
 
 ## Useful Links
 
@@ -29,3 +30,7 @@
 
 - [ml-coursera-python-assignments](https://github.com/dibgerge/ml-coursera-python-assignments)
 - [CS229-ML-Implements](https://github.com/Sierkinhane/CS229-ML-Implements)
+
+---
+
+Project under [MIT License](https://github.com/reycn/PHBS_BIGDATA_2019/blob/master/LICENSE).
