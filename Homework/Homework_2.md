@@ -1,12 +1,12 @@
 # Homework 2: Climate Change (not done yet)
 
-TOC
+[TOC]
 
-<details>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.  
-  
+## Question
+
+There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.  
 In this problem, you will attempt to study the relationship between average global temperature and several other factors. The file climate_change_1.csv contains climate data from May 1983 to December 2008. The available variables include:
-    
-`Year`: the observation year.
+ `Year`: the observation year.
 
 `Month`: the observation month.
 
@@ -20,7 +20,7 @@ In this problem, you will attempt to study the relationship between average glob
 
 `TSI`: the total solar irradiance (TSI) in W/m2 (the rate at which the sun's energy is deposited per unit area). Due to sunspots and other solar phenomena, the amount of energy that is given off by the sun varies substantially with time. This data is from the [SOLARIS-HEPPA project website](https://solarisheppa.geomar.de/solarisheppa/cmip5).
 
-`MEI`: multivariate El Nino Southern Oscillation index (MEI), a measure of the strength of the [El Nino/La Nina-Southern Oscillation](http://en.wikipedia.org/wiki/El_nino) (a weather effect in the Pacific Ocean that affects global temperatures). This data comes from the [ESRL/NOAA Physical Sciences Division](http://www.esrl.noaa.gov/psd/enso/mei/table.html).</details>
+`MEI`: multivariate El Nino Southern Oscillation index (MEI), a measure of the strength of the [El Nino/La Nina-Southern Oscillation](http://en.wikipedia.org/wiki/El_nino) (a weather effect in the Pacific Ocean that affects global temperatures). This data comes from the [ESRL/NOAA Physical Sciences Division](http://www.esrl.noaa.gov/psd/enso/mei/table.html).
 
 ---
 
@@ -51,7 +51,7 @@ df1.head().round()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -162,7 +162,7 @@ df2.head().round(2)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -283,7 +283,7 @@ df1.describe().round(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -436,7 +436,7 @@ df2.describe().round(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -725,7 +725,7 @@ corr[np.abs(corr) > 0.6].fillna('')
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -941,7 +941,7 @@ corr[np.abs(corr) > 0.6].fillna('')
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1211,7 +1211,7 @@ df1_train.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1301,7 +1301,7 @@ df1_test.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1443,7 +1443,7 @@ df1_train.drop(df1_train.columns[8], axis=1)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1749,7 +1749,7 @@ Works fine.
 
 Based on the formula above, R-squred can be applied in Python to evaluate previous model. On training set: $R^2$ is 0.75089, while on testing set, $R^2$ is 0.22518.
 
-\*\*\* _However, for a multi-variable linear model, \$R^{2}_{adjusted}$ may be a better indicator because the original $R^{2}\$ is sensitive to the number of features.\_
+\*\_However, for a multi-variable linear model, $R^{2}_{adjusted}$  may be a better indicator because the original $R^{2}$  is sensitive to the number of features.\_
 
 ### 3. Significant variables
 
@@ -1781,7 +1781,7 @@ variables[variables.pvalues < alpha]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1869,7 +1869,7 @@ df2.head(2)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1944,7 +1944,7 @@ df2_train.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2039,7 +2039,7 @@ df2_test.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2400,7 +2400,7 @@ print('Thus our better model is: \n\ny = '+ ' '.join(formula).replace(' * x0', '
 ```
 
     Thus our better model is:
-
+    
     y = -0.02465 +  0.04909 * x1 +  0.0118 * x2 +  2e-05 * x3 +  -0.00293 * x4 +  -0.88807 * x5
 
 
@@ -2437,7 +2437,7 @@ print('Thus our better model is: \n\ny = '+ ' '.join(formula).replace(' * x0', '
 ```
 
     Thus our better model is:
-
+    
     y = -118.60162 +  0.06204 * x1 +  0.01069 * x2 +  0.08418 * x3 +  -1.58444 * x4
 
 ```python
