@@ -106,3 +106,4 @@ venv.bak/
 Jupyterlab.bat
 Homework/note
 Homework/note/
+*.png
