@@ -1,6 +1,8 @@
 # Homework 2: Climate Change (not done yet)
 
-TOC
+[TOC]
+
+
 
 <details>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.  
 
@@ -1236,7 +1238,6 @@ ____
 
 *After seeing the problem, your classmate Alice immediately argues that we can apply a linear regression model. Though being a little doubtful, you decide to have a try. To solve the linear regression problem, you recall the linear regression has a closed form solution*:  
 $$\theta = (X^TX)^{-1}X^TY$$
-
 
 ### Read and split
 
