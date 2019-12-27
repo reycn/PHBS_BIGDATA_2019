@@ -2313,11 +2313,11 @@ for lambd in lambds:
 
 
 ```python
-from sklearn.model_selection import KFold
-from sklearn.linear_model import Ridge
-from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import RidgeCV
+from sklearn.model_selection import train_test_split
 
-def cross_validation(X, y):
+
+def cross_validation(X, y, alpha=[1e1, 1, 1e-1, 1e-2, 1e-3]):
     """
     Using k-fold to get optimal value of lambda based on R-squared.
 
@@ -2327,29 +2327,27 @@ def cross_validation(X, y):
         y: taget variable, DV.
     Return:
     ----------
-        alpha: learning rate
+        alpha: best lambda(alpha in sklearn)
     """
-    kfold = KFold(n_splits=10).split(X, y)
-    model = Ridge(normalize=True)  # Normalization returns better result
-    lambdas = [10, 1, 0.1, 0.01, 0.001]
-    grid_param = {"alpha": lambdas}
-    grid = GridSearchCV(estimator=model,
-                        param_grid=grid_param,
-                        cv=kfold,
-                        scoring="r2")
-    grid.fit(X, y)
-    alpha = grid.best_params_['alpha']
-    return alpha
+
+    X_train, X_test, y_train, y_test = train_test_split(X,
+                                                        y,
+                                                        test_size=0.2,
+                                                        random_state=0)
+    regressor = RidgeCV(alphas=alpha, store_cv_values=True)
+    regressor.fit(X_train, y_train)
+    cv_mse = np.mean(regressor.cv_values_, axis=0)
+    print(alpha)
+    print(cv_mse)
+    return regressor.alpha_
 
 
-print('Optimal lamba should be ', cross_validation(X_train, y_train))
+print('Optimal lamba should be ', cross_validation(X, y))
 ```
 
-    Optimal lamba should be  0.1
-
-
-    C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
-      DeprecationWarning)
+    [10.0, 1, 0.1, 0.01, 0.001]
+    [[0.01058427 0.01013997 0.00905723 0.00881546 0.00881876]]
+    Optimal lamba should be  0.01
 
 ___
 
@@ -2428,12 +2426,10 @@ formula = [str(theta_lesser.round(5).tolist()[i][0]) + ' * x' + str(i) + ' + ' f
 print('Thus our better model is: \ny = '+ ' '.join(formula).replace(' * x0', '')[:-3])
 ```
 
+    [10.0, 1, 0.1, 0.01, 0.001]
+    [[0.01116522 0.01070773 0.00956511 0.0093032  0.00930385]]
     Thus our better model is: 
-    y = -0.02465 +  0.04909 * x1 +  0.0118 * x2 +  2e-05 * x3 +  -0.00293 * x4 +  -0.88807 * x5
-
-
-    C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
-      DeprecationWarning)
+    y = -0.25903 +  0.05314 * x1 +  0.01136 * x2 +  0.0001 * x3 +  -0.00265 * x4 +  -1.28616 * x5
 
 
 Significance:
@@ -2652,10 +2648,15 @@ pd.DataFrame(comparison).plot.bar()
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x20767150e08>
+    <matplotlib.axes._subplots.AxesSubplot at 0x297b6019988>
 
 
 
 
 ![png](./res/hw2/output_126_1.png)
 
+
+
+```python
+
+```
