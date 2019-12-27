@@ -3,7 +3,7 @@
 TOC
 
 <details>There have been many studies documenting that the average global temperature has been increasing over the last century. The consequences of a continued rise in global temperature will be dire. Rising sea levels and an increased frequency of extreme weather events will affect billions of people.  
-  
+
 In this problem, you will attempt to study the relationship between average global temperature and several other factors. The file climate_change_1.csv contains climate data from May 1983 to December 2008. The available variables include:
     
 `Year`: the observation year.  
@@ -56,7 +56,7 @@ df1.head().round()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -172,7 +172,7 @@ df2.head().round(2)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -298,7 +298,7 @@ df1.describe().round(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -456,7 +456,7 @@ df2.describe().round(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -629,7 +629,7 @@ df1.info()
     Temp        308 non-null float64
     dtypes: float64(9), int64(2)
     memory usage: 26.6 KB
-    
+
 
 
 ```python
@@ -653,7 +653,7 @@ df2.info()
     Temp        308 non-null float64
     dtypes: float64(10), int64(2)
     memory usage: 29.0 KB
-    
+
 
 No missing data were found, then continue.
 
@@ -665,7 +665,7 @@ print('Duplicated rows:', len(df1[df1.duplicated()]), ', then continue.')
 ```
 
     Duplicated rows: 0 , then continue.
-    
+
 
 #### Outliers
 
@@ -744,7 +744,7 @@ print('Outlier:', [df1['MEI'][i] for i in outlier_index])
     Threshhold: 2.9
     Index: [171 172]
     Outlier: [3.0010000000000003, 3.0]
-    
+
 
 Since rare outliers, ignore at preparation step and continue.
 
@@ -771,7 +771,7 @@ corr[np.abs(corr) > 0.6].fillna('')
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -995,7 +995,7 @@ corr[np.abs(corr) > 0.6].fillna('')
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1231,11 +1231,12 @@ ____
 
 ## Problem 1 — First Model
 *We are interested in how changes in these variables affect future temperatures, as well as how well these variables explain temperature changes so far. To do this, first read the dataset climate_change_1.csv into Python or Matlab*.  
-  
+
 *Then, split the data into a training set, consisting of all the observations up to and including 2006, and a testing set consisting of the remaining years. A training set refers to the data that will be used to build the model, and a testing set refers to the data we will use to test our predictive ability*.  
-  
+
 *After seeing the problem, your classmate Alice immediately argues that we can apply a linear regression model. Though being a little doubtful, you decide to have a try. To solve the linear regression problem, you recall the linear regression has a closed form solution*:  
 $$\theta = (X^TX)^{-1}X^TY$$
+
 
 ### Read and split
 
@@ -1273,7 +1274,7 @@ df1_train.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1368,7 +1369,7 @@ df1_test.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1515,7 +1516,7 @@ df1_train.drop(df1_train.columns[8], axis=1).head(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1648,7 +1649,7 @@ df1_train.columns
 
 **Formula of this model**(`round(5)`)
 $$\hat{Temp}=-124.594+0.06421*MEI +0.00646*CO_2+0.00012*CH_4-0.01653*N_2O-0.00663*CFC11+0.00381*CFC12+0.09314*TSI-1.53761*Aerosols$$  
-  
+
 **Formula of R-squred**  
 R-squared measures model fitting and can be calculated as:
 $$R^2 = \frac{var(X\hat{\beta})}{var(y)} = \frac{\sum_{i=1}^{n}(\hat{y}_i-\bar{y})^2}{\sum_{i=1}^{n}(y_i-\bar{y})^2}$$ 
@@ -1718,7 +1719,7 @@ print("R2 by scipy:", l.score(X, y))
 
     R2: 0.7508932770388383
     R2 by scipy: 0.7508932770523428
-    
+
 
 On testing set:
 
@@ -1729,14 +1730,14 @@ print("R2:", rsquare_test)
 ```
 
     R2: 0.22517701916249677
-    
+
 
 Works fine.
 
 **Evaluation**
 
 Based on the formula above, R-squred can be applied in Python to evaluate previous model. On training set: $R^2$ is 0.75089, while on testing set, $R^2$ is 0.22518.   
-  
+
 \*\*\* *However, for a multi-variable linear model, $R^{2}_{adjusted}$ may be a better indicator because the original $R^{2}$ is sensitive to the number of features.*
 
 ### 3. Significant variables
@@ -1772,7 +1773,7 @@ variables[variables.pvalues < alpha]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1870,7 +1871,7 @@ df2.head(3)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -1965,7 +1966,7 @@ df2_train.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2065,7 +2066,7 @@ df2_test.iloc[[0, 1,-2, -1],:]
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -2167,7 +2168,7 @@ theta.flatten()
 
 **Why unreasonable:**  
 Because $X^TX$ is  non-invertible.  
-  
+
 According to [Andrew NG](https://www.coursera.org/learn/machine-learning/supplement/66bi5/normal-equation-noninvertibility), 
 >When implementing the normal equation in octave we want to use the `pinv` function rather than `inv`. The 'pinv' function will give you a value of \thetaθ even if $X^TX$ is not invertible.  
 >If $X^TX$ is noninvertible, the common causes might be having :
@@ -2175,7 +2176,7 @@ According to [Andrew NG](https://www.coursera.org/learn/machine-learning/supplem
 > - **Too many features** (e.g. m ≤ n). In this case, delete some features or use "regularization" (to be explained in a later lesson).  
 >
 >Solutions to the above problems include deleting a feature that is linearly dependent with another or deleting one or more features when there are too many features.
-  
+
 In this case, many variables (as mentioned in the first section exploration) are highly correlated.
 
   
@@ -2268,7 +2269,7 @@ print("R2:", rsquare_test_theta_0, rsquare_test_theta_2)
 ```
 
     R2: 0.22517701916249677 0.8022366128860432
-    
+
 
 Obviously, theta_2, which is the result of ridge regression, is much better due to the lower effect of redundant variables.
 
@@ -2305,7 +2306,7 @@ for lambd in lambds:
     0.1 　　　　 0.69447 　　　　　　　 0.67329
     0.01 　　　　 0.71165 　　　　　　　 0.58528
     0.001 　　　　 0.71483 　　　　　　　 0.56252
-    
+
 
 *Finally, please decide the best regularization parameter λ. (Note that: As a qualified data analyst, you must know how to choose model parameters, please learn about cross validation methods.)*
 
@@ -2344,11 +2345,10 @@ print('Optimal lamba should be ', cross_validation(X_train, y_train))
 ```
 
     Optimal lamba should be  0.1
-    
+
 
     C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
       DeprecationWarning)
-    
 
 ___
 
@@ -2429,11 +2429,11 @@ print('Thus our better model is: \ny = '+ ' '.join(formula).replace(' * x0', '')
 
     Thus our better model is: 
     y = -0.02465 +  0.04909 * x1 +  0.0118 * x2 +  2e-05 * x3 +  -0.00293 * x4 +  -0.88807 * x5
-    
+
 
     C:\Users\oyrx\Anaconda3\lib\site-packages\sklearn\model_selection\_search.py:814: DeprecationWarning: The default of the `iid` parameter will change from True to False in version 0.22 and will be removed in 0.24. This will change numeric results when test-set sizes are unequal.
       DeprecationWarning)
-    
+
 
 Significance:
 
@@ -2474,7 +2474,7 @@ print('Thus our better model is: \n\ny = '+ ' '.join(formula).replace(' * x0', '
     Thus our better model is: 
     
     y = -118.60162 +  0.06204 * x1 +  0.01069 * x2 +  0.08418 * x3 +  -1.58444 * x4
-    
+
 
 
 ```python
@@ -2506,7 +2506,6 @@ print(('R2\nTraining: {}\nTesting: {}').format(rsquare_train, rsquare_test))
     R2
     Training: 0.7336403428986276
     Testing: 0.6328867941215394
-    
 
 ___
 
@@ -2574,15 +2573,16 @@ def gradientDescent(X: np.matrix,
     """
     
     X = (X, normalize(X))[norm] # normalization
-    print(X.shape, np.array(theta).shape, y.shape)
+    # print(X.shape, np.array(theta).shape, y.shape)
     m = len(y)
     J_history = []
+    _theta = theta.copy()
     for i in range(iterations):
-        error = X.T @ (X @ theta - y)
-        theta -= alpha * 1 / m * error
-        J_history.append(costFunction(X, y, theta))
-    # print(theta, J_history)
-    return theta, J_history
+        error = X.T @ (X @ _theta - y)
+        _theta -= alpha * 1 / m * error
+        J_history.append(costFunction(X, y, _theta))
+    # print(_theta, J_history)
+    return _theta, J_history
 ```
 
 ### Datasets
@@ -2608,7 +2608,7 @@ X_train, X_test, y_train, y_test = np.mat(X_train), np.mat(X_test), np.mat(y_tra
 ```python
 # Define parameters
 alpha = 0.01  # Learning rate
-iterations = 1000  # The number of iterations
+iterations = 300000  # The number of iterations
 ```
 
 #### Run
@@ -2620,21 +2620,20 @@ theta_init = np.zeros((X_train.shape[1], 1))
 J_init = costFunction(X_train, y_train, theta_init)
 print("Initial cost:", J_init.round(3))
 
-## Gradient descent method (normalizaed)
+## Gradient descent method (for normalized features)
 result = gradientDescent(X_train, y_train, theta_init, alpha, iterations)
 theta, J_history = result[0], pd.DataFrame(result[1])
 
 J_history.plot.line()
 J_final = float(J_history.round(3)[-1:][0])
-print("Final cost:", J_final, "\nFinal theta:",
+print("Final cost:", J_final, "\nFinal theta(for normalized features):",
       [i[0] for i in theta.round(3)])
 ```
 
     Initial cost: 0.047
-    (284, 9) (9, 1) (284, 1)
-    Final cost: 0.014 
-    Final theta: [-0.008, -0.008, 0.023, 0.108, 0.007, 0.018, 0.111, 0.014, -0.008]
-    
+    Final cost: 0.006 
+    Final theta(for normalized features): [0.205, 0.367, 1.474, 0.588, 0.584, -1.649, 1.033, -0.32, 0.201]
+
 
 
 ![png](./res/hw2/output_124_1.png)
@@ -2652,7 +2651,7 @@ pd.DataFrame(comparison).plot.bar()
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x225f5098148>
+    <matplotlib.axes._subplots.AxesSubplot at 0x20767150e08>
 
 
 
