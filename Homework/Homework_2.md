@@ -1,4 +1,4 @@
-# Homework 2: Climate Change (not done yet)
+# Homework 2: Climate Change
 
 [TOC]
 
