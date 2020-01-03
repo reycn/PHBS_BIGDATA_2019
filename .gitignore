@@ -103,7 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-Jupyterlab.bat
+# Jupyterlab.bat ### for convenience 😁
 Homework/note
 Homework/note/
 *.png
