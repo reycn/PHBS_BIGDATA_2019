@@ -107,4 +107,6 @@ Jupyterlab.bat
 Homework/note
 Homework/note/
 *.png
-Project/data/*
+Project/data/*.txt
+Project/data/raw/*.zip
+Project/output/*.txt
