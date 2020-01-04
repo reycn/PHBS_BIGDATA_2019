@@ -6,8 +6,9 @@ import json as js
 
 
 def head():
+    # !IMPORTANT: user cookies needed! See ./data/cookies.json.template
     cookies_path = os.path.abspath('.') + '\\data\\cookies.json'
-    #print(cookies_path)
+    # print(cookies_path)
     f = open(cookies_path, 'r')
     cookies = js.loads(f.read())
     # print(cookies[0])
