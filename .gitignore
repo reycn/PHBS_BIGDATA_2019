@@ -108,5 +108,7 @@ Homework/note
 Homework/note/
 *.png
 Project/data/*.txt
+Project/data/*.csv
 Project/data/raw/*.zip
 Project/output/*.txt
+Project/data/cookies.json
